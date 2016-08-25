@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "/" => "climbs#index"
+  # root "/" => "climbs#index"
   get  "/users" => "users#index", as: "users"
   get "/users/new" => "users#new", as: "new_user"
   post "/users" => "users#create"
@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   # post "/climbs", => "climbs#create"
   # get "/climbs/:id", => "climbs#show", as: "climb"
 
-  get "/login"
 end
