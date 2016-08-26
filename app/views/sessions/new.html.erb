@@ -11,9 +11,10 @@
     <%= f.password_field :password, placeholder: 'Password' %>
   </div>
   <div>
-    <%= f.submit "Log In" %>
+    <%= f.submit "Log In", :class => "btn btn-primary signup" %>
+
   </div>
   <% end %>
 </div>
-
+<br>
 <%= link_to 'Home', root_path %>
