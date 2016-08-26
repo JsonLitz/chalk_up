@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "/" => "climbs#index"
+  root "climbs#index"
   get  "/users" => "users#index", as: "users"
   get "/users/new" => "users#new", as: "new_user"
   post "/users" => "users#create"
@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   post "/sessions" => "sessions#create"
   get "/logout" => "sessions#destroy", as: "logout"
 
-  get "/climbs" => "climbs#index", as: "climbs"
-  get "/climbs/new" => "climbs#new", as: "new_climb"
-  post "/climbs" => "climbs#create"
-  get "/climbs/:id" => "climbs#show", as: "climb"
+  # get "/climbs" => "climbs#index", as: "climbs"
+  # get "/climbs/new" => "climbs#new", as: "new_climb"
+  # post "/climbs" => "climbs#create"
+  # get "/climbs/:id" => "climbs#show", as: "climb"
 
 end
