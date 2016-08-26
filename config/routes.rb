@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root "/" => "climbs#index"
+  root to: "climbs#index"
   get  "/users" => "users#index", as: "users"
   get "/users/new" => "users#new", as: "new_user"
   post "/users" => "users#create"
