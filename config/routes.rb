@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   patch "/users/:id" => "users#update"
   delete "/users/:id" => "users#destroy"
 
+  # get "/login" => "sessions#new", as: "login"
+  # post "/sessions" => "sessions#create"
+  # get "/logout" => "sessions#destroy", as: "logout"
+
   # get "/climbs", => "climbs#index", as: "climbs"
   # get "/climbs/new", => "climbs#new", as: "new_climb"
   # post "/climbs", => "climbs#create"
