@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    end
   end
 
   def edit
@@ -33,6 +32,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user.id)
     else
       render "new"
+    end
   end
 
   def destroy
@@ -47,6 +47,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :username)
+    params.require(:user).permit(:email, :password_digest, :username)
   end
 end
