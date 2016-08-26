@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: [:show]
+  skip_before_action :authenticate!, only: [:new, :create]
+  
   
   def new
     @user = User.new
@@ -16,12 +17,10 @@ class UsersController < ApplicationController
       redirect_to('/signup')
     end
   end
-################################### NOT READY FOR MAIN BRANCH########
+
   def show
     @user = User.find_by_id(params[:id])
-    if id_authentic?  #check with sessions helper move to before action
-      render :show
-    else
+    if is_current_user_owner?(@user)
       flash[:notice] = 'You are not Authorized for this profile'
       redirect_to user_path(current_user.id)
     end
@@ -32,21 +31,13 @@ class UsersController < ApplicationController
   end
 
   def update
-     @user = User.find_by_id(params[:id])
-      if @user.update_attributes(user_params)
-        redirect_to user_path(current_user.id)
-      else
-        render "new"
-      end
+   @user = User.find_by_id(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to user_path(current_user.id)
+    else
+      render "new"
   end
-
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+end
 
   private
 
