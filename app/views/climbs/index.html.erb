@@ -12,11 +12,11 @@
         <script type="text/javascript">
           handler = Gmaps.build('Google');
           markers = handler.addMarkers(<%=raw @hash.to_json %>);
-          handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+          handler.buildMap({ provider: { disabledDefaultUI: true }, internal: {id: 'map'}}, function(){
             markers = handler.addMarkers([
               {
-                "lat": 37.7,
-                "lng": 122.4,
+                "lat": 37.7749,
+                "lng": -122.4194,
                 "picture": {
                   "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
                   "width":  36,

@@ -3,9 +3,9 @@ class ClimbsController < ApplicationController
 
   def index
     @climbs = Climb.all
-    @hash = Gmaps4rails.build_markers(@users) do |climbs, marker|
-      marker.lat user.latitude
-      marker.lng user.longitude
+    @hash = Gmaps4rails.build_markers(@climbs) do |climb, marker|
+      marker.lat climb.latitude
+      marker.lng climb.longitude
     end
   end
 
