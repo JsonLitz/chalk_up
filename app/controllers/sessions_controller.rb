@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.confirm(user_params)
-    if @user
-      flash[:success] = "Login successful! Welcome #{user.username}!"
+    if @user.valid?
+      flash[:success] = "Login successful! Welcome #{@user.username}!"
       login(@user)
       redirect_to @user
     else
