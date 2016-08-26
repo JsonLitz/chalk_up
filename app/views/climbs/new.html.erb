@@ -4,10 +4,32 @@
    <h3><%= climb.text_field :name, placeholder: "Name", class: "form-field" %></h3>
  </div>
  <div>
- <h3><%= climb.text_field :, placeholder: "Desired Username", class: "form-field" %></h3>
+   <h3><%= climb.text_field :latitude, placeholder: "Latitude(optional)", class: "form-field" %>
  </div>
  <div>
-   <h3><%= climb.password_field :password_digest, placeholder: "Password", class: "form-field" %>
+   <h3><%= climb.text_field :longitude, placeholder: "Longitude(optional)", class: "form-field" %>
  </div>
- <%= climb.submit "Sign Up", :class => "btn btn-primary signup" %>
+ <div>
+   <h3><%= climb.text_field :image_url, placeholder: "Image", class: "form-field" %></h3>
+ </div>
+
+ <%= climb.submit "Create New", :class => "btn btn-primary signup" %>
 <% end %>
+
+
+
+
+  <!-- create_table "climbs", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "name"
+    t.string   "image_url"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.boolean  "geolocation"
+    t.integer  "rating"
+    t.string   "gear",                      array: true
+    t.string   "type"
+    t.boolean  "is_gym?"
+    t.boolean  "verification"
+  end -->
