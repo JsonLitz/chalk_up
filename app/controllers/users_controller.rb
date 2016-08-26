@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:new, :create]
   
   
   def new
@@ -19,29 +19,34 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
-    if is_current_user_owner?(@user)
-      flash[:notice] = 'You are not Authorized for this profile'
-      redirect_to user_path(current_user.id)
+    set_user
     end
   end
 
   def edit
-    @user = User.find_by_id(params[:id])
+    set_user
   end
 
   def update
-   @user = User.find_by_id(params[:id])
+   set_user
     if @user.update_attributes(user_params)
       redirect_to user_path(current_user.id)
     else
       render "new"
   end
-end
+
+  def destroy
+    set_user
+    @user.delete
+  end
+
 
   private
+  def set_user
+    @user = User.find_by_id(params[:id])
+  end
 
   def user_params
-    params.require(:user).permit(:first, :last, :email, :password, :username, :curr_city)
+    params.require(:user).permit(:email, :password, :username)
   end
 end
