@@ -1,0 +1,13 @@
+<h1> Sign Up </h1>
+<%= form_for @climb do |climb| %>
+ <div>
+   <h3><%= climb.text_field :name, placeholder: "Name", class: "form-field" %></h3>
+ </div>
+ <div>
+ <h3><%= climb.text_field :, placeholder: "Desired Username", class: "form-field" %></h3>
+ </div>
+ <div>
+   <h3><%= climb.password_field :password_digest, placeholder: "Password", class: "form-field" %>
+ </div>
+ <%= climb.submit "Sign Up", :class => "btn btn-primary signup" %>
+<% end %>
