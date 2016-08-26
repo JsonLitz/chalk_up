@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  # root "/" => "climbs#index"
+  root to: "climbs#index"
+
   get  "/users" => "users#index", as: "users"
   get "/users/new" => "users#new", as: "new_user"
   post "/users" => "users#create"
@@ -16,5 +17,11 @@ Rails.application.routes.draw do
   get "/climbs/new" => "climbs#new", as: "new_climb"
   post "/climbs" => "climbs#create"
   get "/climbs/:id" => "climbs#show", as: "climb"
+
+  get "/pins" => "pins#index", as: "pins"
+  get "/pins/new" => "pins#new", as: "new_pin"
+  post "/pins" => "pins#create"
+  get "/pins/loc_id" => "pins#show", as: "pin"
+  delete "/pins/loc_id" => "pins#destroy"
 
 end
