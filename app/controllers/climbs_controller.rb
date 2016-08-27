@@ -3,23 +3,23 @@ class ClimbsController < ApplicationController
 
   def index
     @climbs = Climb.all
-
   end
 
   def new
-    @climb = Climb.new(climb_params)
-    @climb.save
+    @climb = Climb.new
 
   end
 
   def create
+    @climb = Climb.new(climb_params)
+    @climb.save
   end
 
   def show
   end
 
   def climb_params
-      params.require(:climb).permit(:name,:image,:longitude, :latitude, :geolocation,:rating, :gear)     
+      params.require(:climb).permit(:name,:image,:longitude, :latitude, :geolocation,:rating, :gear, :type, :gym?)
   end
 
 end
