@@ -6,7 +6,7 @@
 
           <h1 class = "test"><%= @user.username  %> </h1>
           <p> Member since: <%=@user.created_at.strftime("%F")%> </p>
-          <img src= <%= @user.image%> > 
+          <img src= <%= @user.image%> >
 
         </div>
         </span>
@@ -15,17 +15,14 @@
         <h1>Place I've climbed</h1>
         <div class="col-md-5 user_climb_list">
           <ul class = >
-            <%= link_to %>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
             <li>test</li>
             <li>test</li>
             <li>test</li>
             <li>test</li>
 
           </ul>
+          <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
+
         </div>
       </div>
     </div>
