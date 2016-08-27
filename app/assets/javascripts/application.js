@@ -16,3 +16,15 @@
 //= require underscore
 //= require gmaps/google
 //= require_tree .
+
+$(document).on("page:change", function(e){
+ 
+   console.log("this is the url" );
+});
+
+
+function determine_links(location){
+
+locations = ['nil', 'login', 'users']
+
+};

@@ -15,17 +15,18 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   </head>
-
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
 
-    <%=button_to 'Sign Up', new_user_path, :class => "btn btn-default navbar-btn pull-right",:method => :get %>
-    <%=button_to 'Log In', login_path, :class => "btn btn-default navbar-btn pull-right", :method => :get %>
+
+    <%=button_to @link1_name, @link1, :class => "btn btn-default navbar-btn pull-right",:method => :get %>
+    <%=button_to @link2_name, @link2, :class => "btn btn-default navbar-btn pull-right", :method => :get %>
     </div>
   </nav>
 
 
   <body>
     <%= yield %>
+
   </body>
 </html>
