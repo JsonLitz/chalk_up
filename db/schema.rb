@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826181215) do
+ActiveRecord::Schema.define(version: 20160827212512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 20160826181215) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "name"
-    t.string   "image_url"
+    t.string   "image"
     t.float    "longitude"
     t.float    "latitude"
     t.boolean  "geolocation"
     t.integer  "rating"
     t.string   "gear",                      array: true
     t.string   "type"
-    t.boolean  "is_gym?"
+    t.boolean  "gym?"
     t.boolean  "verification"
   end
 
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20160826181215) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.string   "image_url"
+    t.string   "image"
     t.string   "email"
-    t.boolean  "is_admin?"
+    t.boolean  "admin?"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"

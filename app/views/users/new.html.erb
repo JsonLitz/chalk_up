@@ -9,5 +9,8 @@
  <div>
    <h3><%= user.password_field :password, placeholder: "Password", class: "form-field" %>
  </div>
+ <div>
+   <h3><%= user.text_field :image_url, placeholder: "Profile Image", class: "form-field" %>
+ </div>
  <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
 <% end %>
