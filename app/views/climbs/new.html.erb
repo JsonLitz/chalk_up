@@ -16,14 +16,16 @@
    <h3><%= climb.text_field :gear, placeholder: "Gear", class: "form-field" %></h3>
  </div>
  <div>
-   <h3><%= climb.text_field :type, placeholder: "Type", class: "form-field" %></h3>
+   <h3><%= climb.text_field :style, placeholder: "Type", class: "form-field" %></h3>
+</div>
    <div>
+     <p>Is this a gym? </p>
      <%= radio_button_tag(:gym?, "True") %>
-<%= label_tag(:gym?_true, "Yes") %>
+<%= label_tag(:gym?, "Yes") %>
 <%= radio_button_tag(:gym?, "False") %>
-<%= label_tag(:gym?_false, "No") %>
+<%= label_tag(:gym?, "No") %>
    </div>
- </div>
 
- <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
+
+ <%= climb.submit "Submit New Location", :class => "btn btn-primary signup" %>
 <% end %>
