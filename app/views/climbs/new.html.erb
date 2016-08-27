@@ -1,17 +1,1 @@
-<h1> Sign Up </h1>
-<%= form_for @climb do |climb| %>
- <div>
-   <h3><%= climb.text_field :name, placeholder: "Name", class: "form-field" %></h3>
- </div>
- <div>
-   <h3><%= climb.text_field :latitude, placeholder: "Latitude(optional)", class: "form-field" %>
- </div>
- <div>
-   <h3><%= climb.text_field :longitude, placeholder: "Longitude(optional)", class: "form-field" %>
- </div>
- <div>
-   <h3><%= climb.text_field :image_url, placeholder: "Image", class: "form-field" %></h3>
- </div>
 
- <%= climb.submit "Create New", :class => "btn btn-primary signup" %>
-<% end %>
