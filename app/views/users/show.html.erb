@@ -2,30 +2,28 @@
     <div class="profile_image">
       <img src="https://i.ytimg.com/vi/S6kNy0Kforo/maxresdefault.jpg" alt="" class="circle responsive-img" width="200" height="200"></img>
     </div>
-      <span class="profile">
-        <%= form_for @user do |f| %>
-        <%  %>
-    <h1 class = "test">Test</h1>
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <span class="profile">
+          <%= @user.image_url %>
+          <h1 class = "test"><%= @user.username  %> </h1>
+          <p> Member since: <%=@user.created_at.strftime("%F")%> </p>
+        </span>
+      </div>
+      <div class="col-md-6 ">
+        <h1>Place I've climbed</h1>
+        <div class="col-md-5 user_climb_list">
+          <ul class = >
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
 
-
-        <div>
-          <%= f.text_field :username, placeholder: "username" %>
+          </ul>
         </div>
-        <div>
-          <%= f.text_field :email, placeholder: "email" %>
-        </div>
-        <div>
-          <%= f.text_field :image_url, placeholder: "image" %>
-        </div>
-        <%= f.submit "Update", :class => 'waves-effect waves-light btn' %>
-        <% end %>
-    </span>
-        <!-- create_table "users", force: :cascade do |t|
-          t.string   "username"
-          t.string   "image_url"
-          t.string   "email"
-          t.boolean  "is_admin?"
-          t.datetime "created_at",      null: false
-          t.datetime "updated_at",      null: false
-          t.string   "password_digest"
-        end -->
+      </div>
+    </div>
