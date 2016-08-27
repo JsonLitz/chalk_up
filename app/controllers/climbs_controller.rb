@@ -7,7 +7,6 @@ class ClimbsController < ApplicationController
 
   def new
     @climb = Climb.new
-
   end
 
   def create
