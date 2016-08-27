@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   get "/climbs" => "climbs#index", as: "climbs"
   get "/climbs/new" => "climbs#new", as: "new_climb"
   post "/climbs" => "climbs#create"
-  # get "/climbs/:id" => "climbs#show", as: "climb"
+  get "/climbs/:id" => "climbs#show", as: "climb"
 
 end

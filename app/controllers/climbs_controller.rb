@@ -1,5 +1,6 @@
 class ClimbsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+  before_action :set_climb, only: [:show, :edit, :update, :destroy]
 
   def index
     @climbs = Climb.all
@@ -16,13 +17,21 @@ class ClimbsController < ApplicationController
   def create
     @climb = Climb.new(climb_params)
     @climb.save
+    redirect_to climb_path(@climb)
+
   end
 
   def show
   end
 
-  def climb_params
-      params.require(:climb).permit(:name,:image,:longitude, :latitude, :geolocation,:rating, :gear, :style, :gym?)
-  end
+  private
+
+    def set_climb
+      @climb = Climb.find(params[:id])
+    end
+
+    def climb_params
+        params.require(:climb).permit(:name,:image,:longitude, :latitude, :geolocation,:rating, :gear, :style, :gym?)
+    end
 
 end
