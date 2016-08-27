@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827212512) do
+ActiveRecord::Schema.define(version: 20160827223538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160827212512) do
     t.boolean  "geolocation"
     t.integer  "rating"
     t.string   "gear",                      array: true
-    t.string   "type"
+    t.string   "style"
     t.boolean  "gym?"
     t.boolean  "verification"
   end
