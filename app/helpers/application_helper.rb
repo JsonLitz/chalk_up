@@ -2,26 +2,37 @@ module ApplicationHelper
 
 	 def determine_navlinks
 		 p request.path
-		 if logged_in?
+		p logged_in?
+	 	p current_user
+		 if session[:user_id] != nil
+			case request.path
 
-		case request.path
+					when '/'
+						homepage
+						
 
-			when '/'
-				@link1_name = 'Logged IN'
+					when '/climbs'
+			end
+		else
+			not_logged_in_nav
+		 	
+		end
+	end
+
+	def not_logged_in_nav
+				@link1_name = 'Sign Up'
 				@link1 =  'users/new'
-
 				@link2_name = 'Login'
 				@link2 = 'login'
+	end
 
-			when '/climbs'
-				@link1_name = 'climbs'
-				@link1 =  'login'
+	def homepage
+				@link1_name = 'logout'
+				@link1 =  'logout'
 
-				@link2_name = 'we are climbing'
-				@link2 = 'users/new'
-
-			end
-		end
+				@link2_name = 'Profile'
+				@link2 = 'user/'+ session[:user_id].to_s
+		
 	end
 
 end
