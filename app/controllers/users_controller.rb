@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
  skip_before_action :authenticate_user!, only: [:new, :create]
+ before_action :res, only: [:create]
+ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
  def new
    @user = User.new
+   p res
  end
 
  def create
@@ -20,15 +23,12 @@ class UsersController < ApplicationController
  end
 
  def show
-   set_user
  end
 
  def edit
-   set_user
  end
 
  def update
-   set_user
    if @user.update_attributes(user_params)
      redirect_to user_path(current_user.id)
    else
@@ -37,14 +37,13 @@ class UsersController < ApplicationController
  end
 
  def destroy
-   set_user
    @user.delete
  end
 
  private
 
- def determine_resource
-   request.path.split('/')
+ def res
+  request.path.split('/')[1][0..-2]
  end
 
  def set_user
