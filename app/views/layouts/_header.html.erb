@@ -14,8 +14,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -29,11 +27,15 @@
           </ul>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%=button_to 'Sign Up', new_user_path, :class => "btn btn-default navbar-btn pull-right",:method => :get %></li>
-        <li><%=button_to 'Log In', login_path, :class => "btn btn-default navbar-btn pull-right", :method => :get %></li>
+      <div class="nav navbar-nav navbar-right">
+        <div class="container">
+    <%  @links.each.with_index do |link, i| %>
 
-      </ul>
+        <%= link_to @link_names[i], link, :class => "btn btn-default navbar-btn pull-right", :method => :get %>
+        <%end %>
+
+        </div>
+      </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
