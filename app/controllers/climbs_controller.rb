@@ -49,7 +49,7 @@ class ClimbsController < ApplicationController
     end
 
     def climb_params
-        params.require(:climb).permit(:name,:image,:longitude, :latitude, :geolocation,:rating, :gear, :style, :gym?)
+        params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
     end
 
 end

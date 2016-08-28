@@ -7,9 +7,7 @@
       <img src="<%= @climb.image %>" class="img-responsive img-fluid">
     </div>
     <%= @climb.rating %>
-    <% @climb.gear.each do |gear|%>
-      <%= gear %>
-    <% end %>
+    <%= @climb.gear %>
     <%= @climb.gym? %>
   </div>
 </div>
