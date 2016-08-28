@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "/climbs" => "climbs#index", as: "climbs"
   get "/climbs/new" => "climbs#new", as: "new_climb"
   post "/climbs" => "climbs#create"
-  get "/climbs/:id" => "climbs#show", as: "climb"
-
+  # get "/climbs/:id" => "climbs#show", as: "climb"
+  get '/climbs/:id/edit' => "climbs#edit", as: "edit_climb"
+  patch '/climbs/:id/edit' => "climbs#update", as: "update_climb"
+  delete '/climbs/:id' => "climbs#destroy", as: "delete_climb"
 end
