@@ -23,23 +23,17 @@ class ClimbsController < ApplicationController
   end
 
   def edit
-
     @climb = Climb.find(params[:id])
-
   end
 
   def update
-
     @climb.update(climb_params)
     redirect_to root_path
-
   end
 
   def destroy
-
     @climb.destroy
     redirect_to root_path
-
   end
 
   private
@@ -51,5 +45,4 @@ class ClimbsController < ApplicationController
     def climb_params
         params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
     end
-
 end
