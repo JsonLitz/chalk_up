@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 20160828181342) do
   enable_extension "plpgsql"
 
   create_table "climbs", force: :cascade do |t|
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "name"
     t.string   "image"
     t.float    "longitude"
     t.float    "latitude"
     t.boolean  "geolocation"
     t.integer  "rating"
-    t.string   "gear",         default: "[]"
+    t.string   "gear",         default: ""
     t.string   "style"
     t.boolean  "gym?"
     t.boolean  "verification"
