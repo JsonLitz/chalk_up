@@ -30,6 +30,7 @@ class ClimbsController < ApplicationController
 
   def update
     @climb.update(climb_params)
+    @climb[:gear].push(climb_params[:gear])
     render plain: params.inspect
     # redirect_to root_path
 
