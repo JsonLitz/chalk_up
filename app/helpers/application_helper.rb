@@ -28,15 +28,4 @@ module ApplicationHelper
 		@links << '/climbs'<< '/login'<< '/users/new'
 		@link_names << 'Map'<< 'Login'<< 'Sign Up'
 	end
-	
-				
-			
-
-
 end
-
-
-
-
-
-	
