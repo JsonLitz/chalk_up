@@ -29,9 +29,9 @@ class ClimbsController < ApplicationController
   end
 
   def update
-
     @climb.update(climb_params)
-    redirect_to root_path
+    render plain: params.inspect
+    # redirect_to root_path
 
   end
 
