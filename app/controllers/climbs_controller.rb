@@ -15,6 +15,7 @@ class ClimbsController < ApplicationController
 
   def show
   end
+private
 
   private
 
