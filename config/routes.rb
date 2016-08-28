@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   get '/climbs/:id/edit' => "climbs#edit", as: "edit_climb"
   patch '/climbs/:id/edit' => "climbs#update", as: "update_climb"
   delete '/climbs/:id' => "climbs#destroy", as: "delete_climb"
+
+  get "/climbs/:id/new" => "comments#new", as: "new_comment"
+  post "/comments"
+  edit "/comments/:id" => "comments#edit", as: "edit_comment"
+  patch "/comments/:id" => "comments#update", as: "update_comment"
+  delete "/comments/:id" => "comments#destroy", as: "delete_comment"
 end
