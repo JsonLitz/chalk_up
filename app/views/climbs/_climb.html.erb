@@ -6,7 +6,9 @@
     <div class="panel-body pull-left col-xs-3">
       <img src="<%= @climb.image %>" class="img-responsive img-fluid">
     </div>
-    <%= @climb.rating %>
+    <div class="panel-body">
+      <p><%= @climb.rating %></p>
+    </div>
     <%= @climb.gear %>
     <%= @climb.gym? %>
   </div>
