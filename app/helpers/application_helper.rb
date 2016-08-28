@@ -1,5 +1,4 @@
 module ApplicationHelper
-
 	def determine_navlinks
 		@links = []
 		@link_names = []
