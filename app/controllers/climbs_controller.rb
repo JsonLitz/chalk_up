@@ -15,9 +15,6 @@ class ClimbsController < ApplicationController
 
   def show
   end
-private
-
-  private
 
   def edit
     @climb = Climb.find(params[:id])
