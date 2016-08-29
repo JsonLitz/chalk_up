@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment.user_id = @current_user.id
     @comment.save
     Climb.find(params[:id]).comments.push(@comment)
-    redirect_to root_path
+    redirect_to @comment
   end
 
   def show
@@ -27,12 +27,13 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(form_params)
-    redirect_to root_path
+    redirect_to @comment
   end
 
   def delete
     @comment = Comment.find(params[:id])
     @comment.destroy
+    redirect_to comments_path
   end
 
   private
