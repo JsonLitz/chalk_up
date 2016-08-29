@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/climbs/:id" => "climbs#show", as: "climb"
   get '/climbs/:id/edit' => "climbs#edit", as: "edit_climb"
   patch '/climbs/:id' => "climbs#update"
-  delete '/climbs/:id' => "climbs#destroy", as: "delete_climb"
+  delete '/climbs/:id' => "climbs#destroy"
 
   get "/comments" => "comments#index", as: "comments"
   get "/climbs/:id/comments/new" => "comments#new", as: "new_comment"
@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   get "/comments/:id" => "comments#show", as: "comment"
   get "/comments/:id/edit" => "comments#edit", as: "edit_comment"
   patch "/comments/:id" => "comments#update"
-  delete "/comments/:id" => "comments#delete", as: "delete_comment"
+  delete "/comments/:id" => "comments#destroy"
 
 end
