@@ -4,10 +4,10 @@ class ClimbsController < ApplicationController
 
   def index
     @climbs = Climb.all
-    @hash = Gmaps4rails.build_markers(@climbs) do |climb, marker|
-      marker.lat climb.latitude
-      marker.lng climb.longitude
-    end
+    # @hash = Gmaps4rails.build_markers(@climbs) do |climb, marker|
+    #   marker.lat climb.latitude
+    #   marker.lng climb.longitude
+    # end
   end
 
   def new
@@ -15,31 +15,25 @@ class ClimbsController < ApplicationController
   end
 
   def create
-    @climb = Climb.new(climb_params)
-    @climb.save
+    @climb = Climb.create(climb_params)
+    redirect_to climbs_path
   end
 
   def show
   end
 
   def edit
-
     @climb = Climb.find(params[:id])
-
   end
 
   def update
-
     @climb.update(climb_params)
     redirect_to root_path
-
   end
 
   def destroy
-
     @climb.destroy
     redirect_to root_path
-
   end
 
   private
@@ -49,7 +43,6 @@ class ClimbsController < ApplicationController
     end
 
     def climb_params
-        params.require(:climb).permit(:name,:image,:longitude, :latitude, :geolocation,:rating, :gear, :style, :gym?)
+        params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
     end
-
 end

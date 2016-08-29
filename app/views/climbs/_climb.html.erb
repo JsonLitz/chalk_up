@@ -1,0 +1,15 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%=@climb.name%></h3>
+  </div>
+  <div class="panel-body">
+    <div class="panel-body pull-left col-xs-3">
+      <img src="<%= @climb.image %>" class="img-responsive img-fluid">
+    </div>
+    <div class="panel-body">
+      <p><%= @climb.rating %></p>
+    </div>
+    <%= @climb.gear %>
+    <%= @climb.gym? %>
+  </div>
+</div>

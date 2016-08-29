@@ -1,5 +1,5 @@
 <h1> Edit Climb Location </h1>
-<%= form_for @climb, url: edit_climb_path(@climb), method: :patch do |climb| %>
+<%= form_for @climb do |climb| %>
  <div>
    <h3><%= climb.text_field :name, placeholder: "Name", class: "form-field" %></h3>
  </div>
@@ -21,9 +21,9 @@
    <div>
      <p>Is this a gym? </p>
      <%= radio_button_tag(:gym?, "True") %>
-<%= label_tag(:gym?, "Yes") %>
-<%= radio_button_tag(:gym?, "False") %>
-<%= label_tag(:gym?, "No") %>
+     <%= label_tag(:gym?, "Yes") %>
+     <%= radio_button_tag(:gym?, "False") %>
+     <%= label_tag(:gym?, "No") %>
    </div>
 
 
