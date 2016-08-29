@@ -18,7 +18,7 @@ class ClimbsController < ApplicationController
     @climb = Climb.new(climb_params)
     respond_to do |format|
       if @climb.save
-        format.html { redirect_to climbs_path, notice: 'Climb was successfully created.' }
+        format.html { redirect_to climb_path, notice: 'Climb was successfully created.' }
         format.json { render :show, status: :created, location: @climb }
       else
         format.html { render :new }
