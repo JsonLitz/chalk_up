@@ -1,20 +1,20 @@
-<h1>Log in to your account </h1>
 
-<div class="form_for">
-  <%= form_for @user, url: '/sessions' do |f| %>
-  <div>
-    <h3>Email :</h3>
-    <%= f.text_field :email, placeholder: 'Email' %>
+<div class="col-md-3 col-md-offset-4 content_border">
+  <h1>Log in to your account </h1>
+  <div class="form_for">
+    <%= form_for @user, url: '/sessions' do |f| %>
+    <div>
+      <h3>Email :</h3>
+      <%= f.text_field :email, placeholder: 'Email' %>
+    </div>
+    <div>
+      <h3>Password :</h3>
+      <%= f.password_field :password, placeholder: 'Password' %>
+    </div>
+    <div>
+      <%= f.submit "Log In", :class => "btn btn-primary signup" %>
+    </div>
+    <% end %>
   </div>
-  <div>
-    <h3>Password :</h3>
-    <%= f.password_field :password, placeholder: 'Password' %>
-  </div>
-  <div>
-    <%= f.submit "Log In", :class => "btn btn-primary signup" %>
-
-  </div>
-  <% end %>
+  <br>
 </div>
-<br>
-<%= link_to 'Home', root_path %>
