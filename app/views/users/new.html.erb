@@ -1,16 +1,16 @@
 <h1> Sign Up </h1>
-<%= form_for @user do |user| %>
+<%= form_for @user do |f| %>
  <div>
-   <h3><%= user.text_field :email, placeholder: "Email", class: "form-field" %></h3>
+   <h3><%= f.text_field :email, placeholder: "Email", class: "form-field" %></h3>
  </div>
  <div>
-   <h3><%= user.text_field :username, placeholder: "Desired Username", class: "form-field" %></h3>
+   <h3><%= f.text_field :username, placeholder: "Desired Username", class: "form-field" %></h3>
  </div>
  <div>
-   <h3><%= user.text_field :image, placeholder: "Image", class: "form-field" %></h3>
+   <h3><%= f.text_field :image, placeholder: "Image", class: "form-field" %></h3>
  </div>
  <div>
-   <h3><%= user.password_field :password, placeholder: "Password", class: "form-field" %>
+   <h3><%= f.password_field :password, placeholder: "Password", class: "form-field" %>
  </div>
- <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
+ <%= f.submit "Sign Up", :class => "btn btn-primary signup" %>
 <% end %>
