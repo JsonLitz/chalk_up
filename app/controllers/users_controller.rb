@@ -1,32 +1,34 @@
 class UsersController < ApplicationController
  skip_before_action :authenticate_user!, only: [:new, :create]
+ before_action :res, only: [:create]
+ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
  def new
    @user = User.new
+   p res
  end
 
  def create
-   @user = User.create(user_params)
-   if @user.valid?
-     login(@user)
-     redirect_to @user
-   else
-     flash[:notice] = 'email already exists'
-     redirect_to('/signup')
-   end
+   @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
  end
 
  def show
-   set_user
  end
 
  def edit
-   set_user
  end
 
  def update
-   set_user
    if @user.update_attributes(user_params)
      redirect_to user_path(current_user.id)
    else
@@ -35,11 +37,15 @@ class UsersController < ApplicationController
  end
 
  def destroy
-   set_user
    @user.delete
  end
 
  private
+
+ def res
+  request.path.split('/')[1][0..-2]
+ end
+
  def set_user
    @user = User.find_by_id(params[:id])
  end
