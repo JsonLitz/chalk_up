@@ -1,6 +1,6 @@
 class ClimbsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_climb, only: [ :show, :edit, :update, :destroy]
+  before_action :set_climb, only: [:show, :edit, :update, :destroy]
 
   def index
     @climbs = Climb.all
