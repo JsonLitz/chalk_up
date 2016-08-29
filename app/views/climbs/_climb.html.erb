@@ -1,46 +1,25 @@
 <div class="row">
-  <div class="col-md-10 col-md-offset-1 content_border ">
-
-  <!-- <div class="col-sm-6 col-md-4 ">
-    <div class="thumbnail">
-      <img src="<%= @climb.image %>" class="img-responsive img-fluid">
-      <div class="caption">
-        <h1 class="panel-title page-header">Name:<%=@climb.name%></h1>
-        <p>Rating:<%= @climb.rating %></p>
-        <p>Gear: </p>
-        <div class="gear_list">
-
-        <% @climb.gear.split(", ").each do |gear| %>
-          <li> <%= gear %>  </li>
-          <% end %>
-        </div>
-
-        <p><a href="#" class="btn btn-primary" role="button">update</a> <a href="#" class="btn btn-default" role="button">delete</a></p>
-      </div>
-    </div>
-  </div> -->
+  <div class="col-md-12 content_border ">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">chalk up</h3>
       </div>
       <div class="panel-body">
-        <div class="thumbnail pull-left">
-          <img src="<%= @climb.image %>" class="img-responsive img-fluid">
+        <div class="panel-body col-xs-6">
+          <div class="thumbnail">
+            <img src="<%= @climb.image %>" class="img-responsive pull-xs-left">
+          </div>
         </div>
-        <div class="panel-body">
-          <%=@climb.name%>
-        </div>
-        <div class="panel-body">
-          <%=@climb.rating%>
-        </div>
-        <div class="panel-body">
-          <% @climb.gear.split(", ").each do |gear| %>
-            <li><%= gear %></li>
-          <% end %>
-        </div>
+        <ul class="list-group pull-xs-right">
+          <li class="list-group-item"><%=@climb.name%></li>
+          <li class="list-group-item"><%=@climb.rating%></li>
+          <li class="list-group-item"><% @climb.gear.split(", ").each do |gear| %>
+              <%= gear %>
+            <% end %>
+          </li>
+          <li class="list-group-item"></li>
+        </ul>
       </div>
-
     </div>
-
   </div>
 </div>
