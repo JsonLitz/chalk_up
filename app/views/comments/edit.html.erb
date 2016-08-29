@@ -1,27 +1,19 @@
 <div class="container">
   <h1>  Edit Comment</h1>
       <%= form_for @comment, method: :patch do |comment| %>
-
-
       <form class="form-horizontal">
         <fieldset>
-
           <div class="form-group">
             <div class="col-lg-10">
               <%= comment.text_field :title, class: "form-field", placeholder: "Title"%>
             </div>
-            <br>
-            <br>
-
             <div class="col-lg-10">
               <%= comment.text_field :body, class: "form-field", placeholder: "Type in your comment here" %>
             </div>
-
           </div>
           <div class="form-group">
             <%= comment.submit "Submit Comment", :class => "btn btn-primary" %>
           </div>
-
         </fieldset>
       </form>
     <% end %>
