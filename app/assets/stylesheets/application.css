@@ -14,6 +14,14 @@
  *= require_self
  */
 
+ .content_border {
+   border: 1px #4682B4 solid;
+   text-align: center;
+   margin:20px;
+   padding: 20px;
+   border-radius: 10px;
+   background-color: #605878;
+ }
 
  .test {
    color:red;
