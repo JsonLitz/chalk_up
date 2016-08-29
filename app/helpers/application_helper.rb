@@ -3,7 +3,7 @@ module ApplicationHelper
     @links = []
     @link_names = []
 
-    if session[:user_id] != nil || @current_user != nil
+    if session[:user_id] != nil
       logged_in_nav
     else
       not_logged_in_nav
