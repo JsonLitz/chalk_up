@@ -15,8 +15,16 @@ class ClimbsController < ApplicationController
   end
 
   def create
-    @climb = Climb.create(climb_params)
-    redirect_to climbs_path
+    @climb = Climb.new(climb_params)
+    respond_to do |format|
+      if @climb.save
+        format.html { redirect_to @climbs, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @climb }
+      else
+        format.html { render :new }
+        format.json { render json: @climb.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
