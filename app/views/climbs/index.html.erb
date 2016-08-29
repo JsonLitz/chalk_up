@@ -1,3 +1,6 @@
+
+<div class="content_border">
+
 <script src="//maps.google.com/maps/api/js?v=3.25&key=AIzaSyDanasCjwdD12OrdXgITU17UK2BosIb6-g"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <h1 id="splash"> Welcome to Chalk Up! </h1>
@@ -7,28 +10,31 @@
     <div class="col-md-8 col-md-offset-2">
       <h1>Climb Locations</h1>
       <div style='width: 800px;'>
-        <div id="map" style='width: 800px; height: 400px;'></div>
-        <script type="text/javascript">
-          handler = Gmaps.build('Google');
-          markers = handler.addMarkers(<%=raw @hash.to_json %>);
-          handler.buildMap({ provider: { disabledDefaultUI: true }, internal: {id: 'map'}}, function(){
-            markers = handler.addMarkers([
-              {
-                "lat": 37.7749,
-                "lng": -122.4194,
-                "picture": {
-                  "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-                  "width":  36,
-                  "height": 36
-                },
-                "infowindow": "hello!"
-              }
-            ]);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-          });
-        </script>
+        <div id="geolocation" style='width: 800px; height: 400px;'></div>
+ <script type="text/javascript">
+    var handler = Gmaps.build('Google');
+          handler.buildMap({internal: {id: 'geolocation'} }, function(){
+            if(navigator.geolocation)
+              navigator.geolocation.getCurrentPosition(displayOnMap);
+              markers = handler.addMarkers(<%=raw @hash.to_json %>);
+              });
+
+         function displayOnMap(position){
+            var marker = handler.addMarker({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            });
+            handler.map.centerOn(marker)
+            };
+
+  </script>
+
+        <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
+          <% @climbs.each do |climb| %>
+            <%= render :partial => "climb", :locals => {:@climb => climb} %>
+          <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>
