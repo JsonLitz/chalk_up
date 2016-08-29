@@ -36,7 +36,7 @@
           <div class="form-group">
             <label for="inputRating" class="col-lg-2 control-label">Rating</label>
             <div class="col-lg-10">
-              <%= climb.select_tag(:rating, climb.options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
+              <%= select_tag(:rating, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
             </div>
           </div>
 
@@ -44,13 +44,13 @@
             <label class="col-lg-2 control-label">Is this a gym?</label>
             <div class="col-lg-10">
               <div class="radio">
-                <%= climb.radio_button_tag(:gym?, true) %>
+                <%= radio_button_tag('climb[gym]', true) %>
                 <label>
                   Yes
                 </label>
               </div>
               <div class="radio">
-                <%= climb.radio_button_tag(:gym?, false) %>
+                <%= radio_button_tag('climb[gym]', false) %>
                 <label>
                   No
                 </label>
@@ -60,13 +60,15 @@
             <label class="col-lg-2 control-label">Geolocation present?</label>
             <div class="col-lg-10">
               <div class="radio">
-                <%= climb.radio_button_tag(:geolocation, true) %>
+                <!-- <%= radio_button_tag(:geolocation, true) %> -->
+                <%= radio_button("climb", "geolocation", true) %>
                 <label>
                   Yes
                 </label>
               </div>
               <div class="radio">
-                <%= climb.radio_button_tag(:geolocation, false) %>
+                <!-- <%= radio_button_tag(:geolocation, false) %> -->
+                <%= radio_button("climb", "geolocation", false) %>
                 <label>
                   No
                 </label>
