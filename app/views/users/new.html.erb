@@ -1,16 +1,3 @@
-<h1> Sign Up </h1>
-<%= form_for @user do |user| %>
- <div>
-   <h3><%= user.text_field :email, placeholder: "Email", class: "form-field" %></h3>
- </div>
- <div>
-   <h3><%= user.text_field :username, placeholder: "Desired Username", class: "form-field" %></h3>
- </div>
- <div>
-   <h3><%= user.text_field :image, placeholder: "Image", class: "form-field" %></h3>
- </div>
- <div>
-   <h3><%= user.password_field :password, placeholder: "Password", class: "form-field" %>
- </div>
- <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
-<% end %>
+<div class="col-md-3 col-md-offset-4 content_border">
+  <%= render 'form'  %>
+</div>
