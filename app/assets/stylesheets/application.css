@@ -23,6 +23,10 @@
    background-color: #605878;
  }
 
+.picture_width {
+  width:600px;
+}
+
  .test {
    color:red;
  }

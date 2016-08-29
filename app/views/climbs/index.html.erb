@@ -25,12 +25,14 @@
               lng: position.coords.longitude
             });
             handler.map.centerOn(marker)
-            };  
-       
+            };
+
   </script>
 
         <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
-
+          <% @climbs.each do |climb| %>
+            <%= render :partial => "climb", :locals => {:@climb => climb} %>
+          <% end %>
       </div>
     </div>
   </div>
