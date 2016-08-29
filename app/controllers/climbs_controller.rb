@@ -1,6 +1,6 @@
 class ClimbsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_climb, only: [:show, :edit, :update, :destroy]
+  before_action :set_climb, only: [ :show, :edit, :update, :destroy]
 
   def index
     @climbs = Climb.all
@@ -18,7 +18,7 @@ class ClimbsController < ApplicationController
     @climb = Climb.new(climb_params)
     respond_to do |format|
       if @climb.save
-        format.html { redirect_to climb_path, notice: 'Climb was successfully created.' }
+        format.html { redirect_to climb_path(@climb), notice: 'Climb was successfully created.' }
         format.json { render :show, status: :created, location: @climb }
       else
         format.html { render :new }
@@ -31,7 +31,6 @@ class ClimbsController < ApplicationController
   end
 
   def edit
-    @climb = Climb.find(params[:id])
   end
 
   def update
