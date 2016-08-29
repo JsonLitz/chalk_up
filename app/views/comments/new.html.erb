@@ -1,28 +1,27 @@
 <div class="container">
   <h1>  New Comment </h1>
-      <%= form_for :comment, do |comment| %>
+      <%= form_for :comment do |comment| %>
 
 
-      <form class="form-horizontal">
-        <fieldset>
+          <form class="form-horizontal">
+            <fieldset>
 
-          <div class="form-group">
-            <div class="col-lg-10">
-              <%= comment.text_field :title, class: "form-field", placeholder: "Title"%>
-            </div>
+              <div class="form-group">
+                <div class="col-lg-10">
+                  <%= comment.text_field :title, class: "form-field", placeholder: "Title"%>
+                </div>
 
-            <div class="col-lg-10">
-              <%= comment.text_field :body, class: "form-field", placeholder: "Type in your comment here" %>
-            </div>
+                <div class="col-lg-10">
+                  <%= comment.text_field :body, class: "form-field", placeholder: "Type in your comment here" %>
+                </div>
 
-          </div>
+              </div>
 
 
-            <%= comment.submit "Submit Comment", :class => "btn btn-primary" %>
-            <!-- <button type="submit" class="btn btn-primary">Edit Location</button> -->
-          </div>
+                <%= comment.submit "Submit Comment", :class => "btn btn-primary" %>
 
-        </fieldset>
-      </form>
-    <% end %>
+
+            </fieldset>
+          </form>
+      <% end %>
 </div>
