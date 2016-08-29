@@ -11,11 +11,12 @@
       <h1>Climb Locations</h1>
       <div style='width: 800px;'>
         <div id="geolocation" style='width: 800px; height: 400px;'></div>
-        <script type="text/javascript">
-             var handler = Gmaps.build('Google');
+ <script type="text/javascript">
+    var handler = Gmaps.build('Google');
           handler.buildMap({internal: {id: 'geolocation'} }, function(){
             if(navigator.geolocation)
               navigator.geolocation.getCurrentPosition(displayOnMap);
+              markers = handler.addMarkers(<%=raw @hash.to_json %>);
               });
 
          function displayOnMap(position){
@@ -25,7 +26,9 @@
             });
             handler.map.centerOn(marker)
             };  
-        </script>
+       
+  </script>
+
         <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
 
       </div>
