@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'comments/index'
-
-  get 'comments/show'
-
-  get 'comments/new'
-
-  get 'comments/edit'
-
   root "climbs#index"
   get  "/users" => "users#index", as: "users"
   get "/users/new" => "users#new", as: "new_user"
