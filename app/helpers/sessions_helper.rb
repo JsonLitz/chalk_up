@@ -14,7 +14,10 @@ module SessionsHelper
     end
 
     def authenticate_user!
-      redirect_to login_path unless current_user
+       if !current_user
+         redirect_to login_path
+         flash[:error] = "You have to log in!"
+       end
     end
 
     def logout
