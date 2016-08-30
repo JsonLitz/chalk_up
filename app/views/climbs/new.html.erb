@@ -1,0 +1,85 @@
+<div class="container">
+  <h1> New Climb Location </h1>
+      <%= form_for @climb do |f| %>
+
+
+      <form class="form-horizontal">
+        <fieldset>
+
+          <div class="form-group">
+            <label for="climb_name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+              <%= f.text_field :name, class: "form-field" %>
+            </div>
+            <label for="inputLatitude" class="col-lg-2 control-label">Latitude(Optional)</label>
+            <div class="col-lg-10">
+              <%= f.text_field :latitude, class: "form-field" %>
+            </div>
+            <label for="inputLongitude" class="col-lg-2 control-label">Longitude(Optional)</label>
+            <div class="col-lg-10">
+              <%= f.text_field :longitude, placeholder: "Longitude(optional)", class: "form-field" %>
+            </div>
+            <label for="inputImage" class="col-lg-2 control-label">Image</label>
+            <div class="col-lg-10">
+              <%= f.text_field :image, placeholder: "Image", class: "form-field" %>
+            </div>
+            <label for="inputGear" class="col-lg-2 control-label">Gear</label>
+            <div class="col-lg-10">
+              <%= f.text_field :gear, placeholder: "Gear", class: "form-field" %>
+            </div>
+            <label for="inputStyle" class="col-lg-2 control-label">Style</label>
+            <div class="col-lg-10">
+              <%= f.text_field :style, placeholder: "Type", class: "form-field" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputRating" class="col-lg-2 control-label">Rating</label>
+            <div class="col-lg-10">
+              <%= f.select("rating", options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Is this a gym?</label>
+            <div class="col-lg-10">
+              <div class="radio">
+                <%= radio_button_tag('climb[gym?]', true) %>
+                <label>
+                  Yes
+                </label>
+              </div>
+              <div class="radio">
+                <%= radio_button_tag('climb[gym?]', false) %>
+                <label>
+                  No
+                </label>
+              </div>
+            </div>
+
+            <label class="col-lg-2 control-label">Geolocation present?</label>
+            <div class="col-lg-10">
+              <div class="radio">
+                <%= f.radio_button("geolocation", true) %>
+                <label>
+                  Yes
+                </label>
+              </div>
+              <div class="radio">
+                <%= f.radio_button("geolocation", false) %>
+                <label>
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <%= f.submit "Submit New Location", :class => "btn btn-primary signup" %>
+            <!-- <button type="submit" class="btn btn-primary">Edit Location</button> -->
+          </div>
+
+        </fieldset>
+      </form>
+      <% end %>
+</div>

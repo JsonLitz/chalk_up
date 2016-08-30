@@ -1,0 +1,16 @@
+<h1>All Comments</h1>
+<% @comments.each do |comment| %>
+
+<h2> <%= comment.title %> </h2>
+
+<p> <%= comment.body %> </p>
+
+<%= link_to 'Show', comment_path(comment) %> |
+<%= link_to 'Edit', edit_comment_path(comment) %> |
+<%= link_to 'Delete', delete_comment_path(comment), method: :delete %>
+
+<hr>
+<% end %>
+
+
+<%= link_to 'Home', root_path %>
