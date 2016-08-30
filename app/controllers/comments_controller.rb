@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def index
     @comments = Comment.all
   end
@@ -12,8 +13,17 @@ class CommentsController < ApplicationController
     @comment.user_id = @current_user.id
     @comment.save
     Climb.find(params[:id]).comments.push(@comment)
-    redirect_to @comment
+    redirect_to climb_path(@comment.climb_id)
   end
+
+  #
+  # def create
+  #   @comment = Comment.new(form_params)
+  #   @comment.user_id = @current_user.id
+  #   @comment.save
+  #   Climb.find(params[:id]).comments.push(@comment)
+  #   redirect_to @comment
+  # end
 
   def show
     @comment = Comment.find(params[:id])
@@ -21,7 +31,7 @@ class CommentsController < ApplicationController
 
 
   def edit
-      @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
@@ -37,6 +47,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def set_climb
+    @climb = Climb.find_by_id(params[:id])
+  end
 
   def form_params
 

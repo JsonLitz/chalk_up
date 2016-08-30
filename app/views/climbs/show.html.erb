@@ -1,1 +1,11 @@
 <%= render 'climb' %>
+<div class="panel panel-default col-lg-8 col-lg-offset-2">
+  <% @climb.comments.each do |comment| %>
+    <div class="panel-heading">
+      <%= comment.title %>
+    </div>
+    <div class="panel-body">
+      <%= comment.body %>
+    </div>
+  <% end %>
+</div>
