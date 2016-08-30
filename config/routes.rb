@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get "/comments" => "comments#index", as: "comments"
   get "/climbs/:id/comments/new" => "comments#new", as: "new_comment"
-  post "/climbs/:id/comments" => "comments#create"
+  post "/climbs/:id/comments/new" => "comments#create"
   get "/comments/:id" => "comments#show", as: "comment"
   get "/comments/:id/edit" => "comments#edit", as: "edit_comment"
   patch "/comments/:id" => "comments#update"
