@@ -3,11 +3,18 @@ class ClimbsController < ApplicationController
   before_action :set_climb, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @climbs = Climb.all
     @hash = Gmaps4rails.build_markers(@climbs) do |climb, marker|
       marker.lat climb.latitude
       marker.lng climb.longitude
+      marker.json({ :id => climb.id })
+      link = view_context.link_to "more info about #{climb.name}", "/climbs/#{climb.id}"  
+      description = "Website: #{link}"  
+      marker.infowindow description
+
     end
+    
   end
 
   def new
@@ -35,7 +42,7 @@ class ClimbsController < ApplicationController
 
   def update
     @climb.update(climb_params)
-    redirect_to root_path
+    redirect_to climb_path(@climb)
   end
 
   def destroy
