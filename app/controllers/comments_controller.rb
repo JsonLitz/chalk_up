@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :ensure_authorization, only: [:show, :edit, :update, :destroy]
 
   def index
     @comments = Comment.all
@@ -17,35 +18,37 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    redirect_to climb_path(@comment.climb)
   end
 
-
   def edit
-    @comment = Comment.find(params[:id])
+
   end
 
   def update
-    @comment = Comment.find(params[:id])
+
     @comment.update(form_params)
-    redirect_to @comment
+    redirect_to climb_path(@comment.climb)
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+
     @comment.destroy
-    redirect_to comments_path
+    redirect_to climb_path(@comment.climb)
   end
 
   private
 
-  def set_climb
-    @climb = Climb.find_by_id(params[:id])
-  end
 
   def form_params
 
     params.require(:comment).permit(:title, :body)
 
+  end
+
+  def ensure_authorization
+    @comment = Comment.find(params[:id])
+
+    redirect_to climb_path(@comment.climb) unless @comment.user_id == session[:user_id]
   end
 end
