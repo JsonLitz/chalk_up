@@ -16,15 +16,6 @@ class CommentsController < ApplicationController
     redirect_to climb_path(@comment.climb_id)
   end
 
-  #
-  # def create
-  #   @comment = Comment.new(form_params)
-  #   @comment.user_id = @current_user.id
-  #   @comment.save
-  #   Climb.find(params[:id]).comments.push(@comment)
-  #   redirect_to @comment
-  # end
-
   def show
     @comment = Comment.find(params[:id])
   end
