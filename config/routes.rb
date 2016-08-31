@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/users/new" => "users#new", as: "new_user"
   post "/users" => "users#create"
   get "/users/:id" => "users#show", as: "user"
-  get "/users/:id" => "users#edit"
+  get "/users/:id/edit" => "users#edit", as: 'edit_user'
   patch "/users/:id" => "users#update"
   delete "/users/:id" => "users#destroy"
 
@@ -27,5 +27,13 @@ Rails.application.routes.draw do
   get "/comments/:id/edit" => "comments#edit", as: "edit_comment"
   patch "/comments/:id" => "comments#update"
   delete "/comments/:id" => "comments#destroy"
+
+  get "/climbs/:climb_id/checkins" => "checkins#index", as: "climb_checkins"
+  post "/climbs/:climb_id/checkins/new" => "checkins#create"
+  get "/climbs/:climb_id/checkins/new" => "checkins#new", as: "new_climb_checkin"
+  get "/checkins/:id/edit" => "checkins#edit", as: "edit_checkin"
+  get "/checkins/:id" => "checkins#show", as: "checkin"
+  patch "/checkins/:id" => "checkins#update"
+  delete "/checkins/:id" => "checkins#destroy"
 
 end
