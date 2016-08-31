@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    # redirect_to climb_path(@comment.climb_id)
+    redirect_to climb_path(@comment.climb_id)
   end
 
   def edit
