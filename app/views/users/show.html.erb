@@ -5,8 +5,8 @@
           <div class="profile_image">
 
           <h1 class = "test"><%= @user.username  %> </h1>
-          <p> Member since: <%=@user.created_at.strftime("%F")%> </p>
-          <img src= <%= @user.image%> >
+          <p> Member since: <%=@user.created_at.strftime("%b %-d %Y, %H:%M%p")%> </p>
+          <img src="<%= @user.image%>">
 
         </div>
         </span>

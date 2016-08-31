@@ -31,13 +31,16 @@ class UsersController < ApplicationController
 
  def update
    if @user.update_attributes(user_params)
+     flash[:notice] = "Your profile has been successfully updated"
      redirect_to user_path(current_user.id)
    else
-     render "new"
+     flash[:error] = "There was an error in updating your profile"
+     redirect_to @user
    end
  end
 
  def destroy
+   flash[:notice] = "Your acount was successfuly deleted. We hope to see you again soon!"
    @user.delete
  end
 
