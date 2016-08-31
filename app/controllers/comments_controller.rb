@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
     @comment.user_id = @current_user.id
     @comment.save
     Climb.find(params[:id]).comments.push(@comment)
+    flash[:notice] = "Congrats! Your comment has been successfuly posted."
     redirect_to climb_path(@comment.climb_id)
   end
 
@@ -26,14 +27,14 @@ class CommentsController < ApplicationController
   end
 
   def update
-
     @comment.update(form_params)
+    flash[:notice] = "Congrats! Your comment has been successfuly updated."
     redirect_to climb_path(@comment.climb)
   end
 
   def destroy
-
     @comment.destroy
+    flash[:notice] = "Your comment has been successfully deleted."
     redirect_to climb_path(@comment.climb)
   end
 
@@ -41,9 +42,7 @@ class CommentsController < ApplicationController
 
 
   def form_params
-
     params.require(:comment).permit(:title, :body)
-
   end
 
   def ensure_authorization
