@@ -35,7 +35,7 @@ class ClimbsController < ApplicationController
 
   def update
     @climb.update(climb_params)
-    redirect_to root_path
+    redirect_to climb_path(@climb)
   end
 
   def destroy
