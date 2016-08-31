@@ -1,0 +1,26 @@
+<fieldset>
+  <%= form_for :checkin do |checkin| %>
+    <div class="form-group hidden">
+      <label>Climb_ID</label>
+      <div class="form-field">
+        <%= checkin.number_field :climb_id, value: params[:climb_id], class: "form-field" %>
+      </div>
+    </div>
+    <div class="form-group hidden">
+      <label>User_ID</label>
+      <div class="form-field">
+        <%= checkin.number_field :user_id, value: session[:user_id], class: "form-field" %>
+      </div>
+    </div>
+    <div class="form-group hidden">
+      <label>Count</label>
+      <div class="form-field">
+        <%= checkin.number_field :count, value: 1, class: "form-field"%>
+      </div>
+    </div>
+    <%= checkin.submit "Checkin to this Climb!", :class => "btn btn-primary hidden" %>
+  <% end %>
+  <script>
+    $("form").submit();
+  </script>
+</fieldset>
