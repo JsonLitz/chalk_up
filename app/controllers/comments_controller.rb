@@ -12,9 +12,15 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(form_params)
     @comment.user_id = @current_user.id
-    @comment.save
     Climb.find(params[:id]).comments.push(@comment)
+
+    if @comment.save
+    flash[:notice] = "Congrats! Your comment has been successfuly posted."
     redirect_to climb_path(@comment.climb_id)
+    else
+      flash[:error] = "There was an error in saving your comment: #{@comment.errors.full_messages.join(', ')}"
+      redirect_to climb_path(params[:id])
+    end
   end
 
   def show
@@ -27,13 +33,20 @@ class CommentsController < ApplicationController
 
   def update
 
-    @comment.update(form_params)
-    redirect_to climb_path(@comment.climb)
+    if @comment.update(form_params)
+      flash[:notice] = "Congrats! Your comment has been successfuly updated."
+      redirect_to climb_path(@comment.climb)
+    else
+      flash[:error] = "There was an error in updating your comment: #{@comment.errors.full_messages.join(',')}"
+      redirect_to climb_path(@comment.climb)
+    end
+
   end
 
   def destroy
 
     @comment.destroy
+    flash[:notice] = "Your comment has been successfully deleted."
     redirect_to climb_path(@comment.climb)
   end
 

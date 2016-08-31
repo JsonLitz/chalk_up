@@ -11,18 +11,25 @@
   <% end %>
 
   <div>
-    <h3><%= user.text_field :email, placeholder: "Email", class: "form-field" %></h3>
+    <h3>Email: <%= user.text_field :email, placeholder: "Email", class: "form-field" %></h3>
   </div>
   <div>
-    <h3><%= user.text_field :username, placeholder: "Desired Username", class: "form-field" %></h3>
+    <h3>Username: <%= user.text_field :username, placeholder: "Desired Username", class: "form-field" %></h3>
   </div>
   <div>
-    <h3><%= user.text_field :image, placeholder: "Image", class: "form-field" %></h3>
+    <h3>Image URL: <%= user.text_field :image, placeholder: "Image", class: "form-field" %></h3>
   </div>
   <div>
-    <h3><%= user.password_field :password, placeholder: "Password", class: "form-field" %>
+    <h3>Password: <%= user.password_field :password, placeholder: "Password", class: "form-field" %>
   </div>
   <div class="actions">
+  <% if session[:user_id] %>
+  <%= user.submit "Edit Profile", :class => "btn btn-primary signup" %>
+
+  <% else %>
+
    <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
+
+   <% end %>
   </div>
 <% end %>

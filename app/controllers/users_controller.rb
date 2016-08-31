@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         login(@user)
-        format.html { redirect_to user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to user_path(@user), notice: 'You have successfully signed up!' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -31,14 +31,22 @@ class UsersController < ApplicationController
 
  def update
    if @user.update_attributes(user_params)
+     flash[:notice] = "Your profile has been successfully updated"
      redirect_to user_path(current_user.id)
    else
-     render "new"
+     flash[:error] = "There was an error in updating your profile"
+     redirect_to @user
    end
  end
 
  def destroy
-   @user.delete
+
+   @user.comments.delete_all
+   @user.destroy
+   logout
+
+   flash[:notice] = "Your acount was successfuly deleted. We hope to see you again soon!"
+   redirect_to root_path
  end
 
  private
