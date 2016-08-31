@@ -40,8 +40,11 @@ class UsersController < ApplicationController
  end
 
  def destroy
-   flash[:notice] = "Your acount was successfuly deleted. We hope to see you again soon!"
-   @user.delete
+  @user.comments.delete_all
+  @user.destroy
+  logout
+  flash[:notice] = "Your account was successfuly deleted. We hope to see you again soon!"
+  redirect_to root_path
  end
 
  private

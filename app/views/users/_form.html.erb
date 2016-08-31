@@ -22,6 +22,12 @@
     <h3><%= user.password_field :password, placeholder: "Password", class: "form-field" %>
   </div>
   <div class="actions">
-   <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
+  <% if session[:user_id] %>
+    <%= user.submit "Edit Profile", :class => "btn btn-primary signup"%>
+  <% else %>
+
+    <%= user.submit "Sign Up", :class => "btn btn-primary signup" %>
+  <% end %>
+
   </div>
 <% end %>
