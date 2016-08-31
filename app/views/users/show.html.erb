@@ -12,13 +12,14 @@
         </span>
       </div>
       <div class="col-md-6 ">
-        <h1>Place I've climbed</h1>
+        <h1>Places I've climbed</h1>
         <div class="col-md-5 user_climb_list">
-          <ul class = >
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
+          <ul>
+            <% @climbs.each do |f| %>
+              <li><%= f.name %></li>
+
+            <% end %>
+
           </ul>
           <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
 

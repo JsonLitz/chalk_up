@@ -24,6 +24,8 @@ class UsersController < ApplicationController
  end
 
  def show
+   @climbs = User.find(params[:id]).climbs.distinct
+
  end
 
  def edit
