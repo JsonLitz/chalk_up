@@ -15,5 +15,4 @@
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
-//= require materialize-sprockets 
 //= require_tree .
