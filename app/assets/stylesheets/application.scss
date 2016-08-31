@@ -1,43 +1,42 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- @import "materialize";
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import "materialize";
 
- .content_border {
-   border: 1px #4682B4 solid;
-   text-align: center;
-   margin:20px;
-   padding: 20px;
-   border-radius: 10px;
-   background-color: #605878;
- }
+.content_border {
+  border: 1px #E0AFA0 solid;
+  text-align: center;
+  margin:20px;
+  padding: 20px;
+  border-radius: 10px;
+}
 
 .picture_width {
   width:600px;
 }
 
- .test {
-   color:red;
- }
+.test {
+  color:red;
+}
 
- header {
-   margin-bottom: 50px;
- }
+header {
+  margin-bottom: 50px;
+}
 
 body {
-  background-color: #B2E6D4;
+  background-color: #BCB8B1;
 }
 
 .header_text {
@@ -46,4 +45,43 @@ body {
 
 .sub_header_text{
   color: #A49E8D;
+}
+
+
+.nav_bar{
+  background-color: #8A817C;
+}
+
+
+.buttons {
+  font-size: 10px;
+  color:#463F3A;
+  margin: 10px;
+}
+
+.buttons2 {
+  font-size: 10px;
+  background-color:#463F3A;
+  color: white;
+  margin: 10px;
+}
+
+.chalk {
+  color:white;
+
+}
+
+.center {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+#header_icon {
+  height:2em;
+  padding: 10px;
+}
+
+.main_map {
+  width: 800px;
+  height: 500px;
 }
