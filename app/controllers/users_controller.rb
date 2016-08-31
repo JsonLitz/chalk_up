@@ -1,15 +1,13 @@
-class UsersController < ApplicationController
- skip_before_action :authenticate_user!, only: [:new, :create]
- before_action :res, only: [:create]
- before_action :set_user, only: [:show, :edit, :update, :destroy]
+  class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
- def new
-   @user = User.new
-   p res
- end
+  def new
+  @user = User.new
+  end
 
- def create
+  def create
    @user = User.new(user_params)
     respond_to do |format|
       if @user.save
@@ -21,37 +19,34 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
- end
+  end
 
- def show
- end
+  def show
+  end
 
- def edit
- end
+  def edit
+  end
 
- def update
+  def update
    if @user.update_attributes(user_params)
      redirect_to user_path(current_user.id)
    else
      render "new"
    end
- end
+  end
 
- def destroy
-   @user.delete
- end
+  def destroy
+    @user.delete
+  end
 
- private
+  private
 
- def res
-  request.path.split('/')[1][0..-2]
- end
+    def set_user
+     @user = User.find_by_id(params[:id])
+    end
 
- def set_user
-   @user = User.find_by_id(params[:id])
- end
-
- def user_params
-   params.require(:user).permit(:email, :password, :username, :image)
- end
+    def user_params
+     params.require(:user).permit(:email, :password, :username, :image)
+    end
+  end
 end

@@ -9,12 +9,11 @@ class ClimbsController < ApplicationController
       marker.lat climb.latitude
       marker.lng climb.longitude
       marker.json({ :id => climb.id })
-      link = view_context.link_to "more info about #{climb.name}", "/climbs/#{climb.id}"  
-      description = "Website: #{link}"  
+      link = view_context.link_to "More info about #{climb.name}", "/climbs/#{climb.id}"
+      description = "#{link}"
       marker.infowindow description
-
     end
-    
+
   end
 
   def new
@@ -53,10 +52,10 @@ class ClimbsController < ApplicationController
   private
 
     def set_climb
-        @climb = Climb.find(params[:id])
+      @climb = Climb.find(params[:id])
     end
 
     def climb_params
-        params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
+      params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
     end
 end
