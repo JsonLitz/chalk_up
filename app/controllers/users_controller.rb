@@ -24,6 +24,15 @@ class UsersController < ApplicationController
  end
 
  def show
+  @climb_name = []
+  @time_checked_in = []
+  @user.checkins.each.with_index do |checkin|
+    justin_is_my_copilot = checkin.climb_id
+    time_in = checkin.created_at.strftime("%b %-d %Y, %H:%M%p")
+    @time_checked_in << time_in
+    climb_name = climb_name(justin_is_my_copilot)
+    @climb_name << climb_name
+  end
  end
 
  def edit
@@ -48,6 +57,10 @@ class UsersController < ApplicationController
  end
 
  private
+
+ def climb_name(id)
+   Climb.find_by_id(id).name
+ end
 
  def res
   request.path.split('/')[1][0..-2]
