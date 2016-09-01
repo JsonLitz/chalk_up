@@ -17,7 +17,10 @@ class UsersController < ApplicationController
         format.html { redirect_to user_path(@user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new }
+        format.html {
+        flash[:error] = "There was an error in saving: #{@user.errors.full_messages.join(', ')}"
+        redirect_to new_user_path
+      }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -36,7 +39,7 @@ class UsersController < ApplicationController
     @climb_name << climb_name
   end
  end
- 
+
  def edit
  end
 
@@ -78,4 +81,4 @@ class UsersController < ApplicationController
 
 
 
- end
+end
