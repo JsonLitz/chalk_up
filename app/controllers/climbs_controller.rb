@@ -9,7 +9,7 @@ class ClimbsController < ApplicationController
       marker.lat climb.latitude
       marker.lng climb.longitude
       marker.json({ :id => climb.id })
-      link = view_context.link_to "Would You Like to Know More About #{climb.name}", "/climbs/#{climb.id}"  
+      link = view_context.link_to "Would You Like to Know More About #{climb.name}?", "/climbs/#{climb.id}"  
       description = "#{link}"  
       marker.infowindow description
       determine_pin_color(climb, marker)
