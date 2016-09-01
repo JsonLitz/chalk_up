@@ -2,6 +2,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :climb
 
-  validates :title, length: {in: 2..30}, presence: true
-  validates :body, length: {in: 2..300}, presence: true
+  validates :title, length: {in: 2..100}, presence: true
+  validates :body, length: { minimum: 2 }, presence: true
 end

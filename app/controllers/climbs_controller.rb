@@ -5,12 +5,12 @@ class ClimbsController < ApplicationController
 
   def index
     @climbs = Climb.all
-    @hash = Gmaps4rails.build_markers(@climbs) do |climb, marker|  
+    @hash = Gmaps4rails.build_markers(@climbs) do |climb, marker|
       marker.lat climb.latitude
       marker.lng climb.longitude
       marker.json({ :id => climb.id })
-      link = view_context.link_to "Would You Like to Know More About #{climb.name}?", "/climbs/#{climb.id}"  
-      description = "#{link}"  
+      link = view_context.link_to "Would You Like to Know More About #{climb.name}?", "/climbs/#{climb.id}"
+      description = "#{link}"
       marker.infowindow description
       determine_pin_color(climb, marker)
     end
@@ -66,8 +66,8 @@ class ClimbsController < ApplicationController
   private
 
     def determine_pin_color(climb, marker)
-      if climb.gym? == true
-          color = '585123'   
+      if climb.gym?
+          color = '585123'
       elsif climb.verification != nil
          color = '772F1A'
       else
@@ -77,19 +77,19 @@ class ClimbsController < ApplicationController
     end
 
     def build_pin_image(color, climb, marker)
-      marker.picture({ 
+      marker.picture({
           :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|#{color}|000000",
           :width => 32,
-          :height => 32 
+          :height => 32
           });
     end
-    
+
     def set_climb
       @climb = Climb.find(params[:id])
     end
 
     def climb_params
-      params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
+      params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym)
     end
 
     def require_admin
