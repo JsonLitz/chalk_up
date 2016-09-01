@@ -1,6 +1,4 @@
-
 <div class="content_border">
-
 <script src="//maps.google.com/maps/api/js?v=3.25&key=AIzaSyDanasCjwdD12OrdXgITU17UK2BosIb6-g"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <h1 id="splash"> Welcome to Chalk Up! </h1>
@@ -12,10 +10,10 @@
       <div style='width: 800px;'>
         <div id="map" style='width: 1000px; height: 600px;'></div>
  <script type="text/javascript">
-    
     handler = Gmaps.build('Google');
-handler.buildMap({
+    handler.buildMap({
     provider: {
+      scrollwheel: false,
       disableDefaultUI: false
       // pass in other Google Maps API options here
     },
@@ -24,17 +22,8 @@ handler.buildMap({
     }
   },
   function(){
-      if(navigator.geolocation)
-              navigator.geolocation.getCurrentPosition(displayOnMap);
-              markers = handler.addMarkers(<%=raw @hash.to_json %>);
-
-          function displayOnMap(position){
-            var marker = handler.addMarker({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            });
-            handler.map.centerOn(marker)
-            };
+    handler.map.centerOn([37.7749, -122.419])
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
 });  
 </script>
 
@@ -42,10 +31,3 @@ handler.buildMap({
       </div>
     </div>
   </div>
-  <diV class="row">
-    <% @climbs.each do |climb| %>
-      <%= render :partial => "climb", :locals => {:@climb => climb} %>
-    <% end %>
-  </div>
-</div>
-</div>

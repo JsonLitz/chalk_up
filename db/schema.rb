@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828181342) do
+ActiveRecord::Schema.define(version: 20160831185142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "checkins", force: :cascade do |t|
+    t.integer  "climb_id"
+    t.integer  "user_id"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["climb_id"], name: "index_checkins_on_climb_id", using: :btree
+    t.index ["user_id"], name: "index_checkins_on_user_id", using: :btree
+  end
 
   create_table "climbs", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -28,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160828181342) do
     t.string   "style"
     t.boolean  "gym?"
     t.boolean  "verification"
+    t.text     "checkins"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -51,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160828181342) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "checkins", "climbs"
+  add_foreign_key "checkins", "users"
   add_foreign_key "comments", "climbs"
   add_foreign_key "comments", "users"
 end

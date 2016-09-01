@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :comments
+  has_many :checkins
   validates :username, presence: true, length: { maximum: 15 }
   validates :password_digest, presence: true
 
