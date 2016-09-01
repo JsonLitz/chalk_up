@@ -16,3 +16,12 @@
 //= require underscore
 //= require gmaps/google
 //= require_tree .
+
+navigator.geolocation.getCurrentPosition(displayOnMap);
+function displayOnMap(position) {
+  var currentMarker = ({
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  });
+  handler.map.centerOn(currentMarker);
+}
