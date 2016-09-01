@@ -26,15 +26,17 @@ class UsersController < ApplicationController
  def show
   @climb_name = []
   @time_checked_in = []
+  @justins_landspeeder = []
   @user.checkins.each.with_index do |checkin|
-    justin_is_my_copilot = checkin.climb_id
+    @justin_is_my_copilot = checkin.climb_id
+    @justins_landspeeder << @justin_is_my_copilot
     time_in = checkin.created_at.strftime("%b %-d %Y, %H:%M%p")
     @time_checked_in << time_in
-    climb_name = climb_name(justin_is_my_copilot)
+    climb_name = climb_name(@justin_is_my_copilot)
     @climb_name << climb_name
   end
  end
-
+ 
  def edit
  end
 
@@ -73,4 +75,7 @@ class UsersController < ApplicationController
  def user_params
    params.require(:user).permit(:email, :password, :username, :image)
  end
-end
+
+
+
+ end
