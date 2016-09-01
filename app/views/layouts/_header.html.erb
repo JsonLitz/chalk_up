@@ -1,12 +1,12 @@
 <nav>
   <div class="nav-wrapper nav_bar">
-  <a href="/" class="brand-logo center">
+  <a href="/" class="brand-logo right">
     <img src="http://findicons.com/files/icons/2770/ios_7_icons/128/climbing.png" id = "header_icon" alt="MDN">
   </a>
 
-    <ul id="nav-mobile" class="left hide-on-med-and-down ">
+    <ul id="nav-mobile" class="left">
       <%  @links.each.with_index do |link, i| %>
-      <%= link_to @link_names[i], link, :class => "waves-effect btn-flat white buttons", :method => :get %>
+      <%= link_to @link_names[i], link, :class => "waves-effect btn-flat white buttons", id: 'nav-links', :method => :get %>
       <%end %>
     </ul>
 

@@ -34,7 +34,7 @@ class ClimbsController < ApplicationController
   end
 
   def show
-    if @climb == nil 
+    if @climb == nil
       @climb = Climb.name(params[:id])
     end
   end
@@ -71,7 +71,7 @@ class ClimbsController < ApplicationController
       elsif climb.verification != nil
          color = '772F1A'
       else
-         color = 'EEC170'
+         color = 'DE541E'
       end
         build_pin_image(color, climb, marker)
     end
