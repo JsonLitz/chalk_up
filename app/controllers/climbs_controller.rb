@@ -66,7 +66,7 @@ class ClimbsController < ApplicationController
   private
 
     def determine_pin_color(climb, marker)
-      if climb.gym?
+      if climb.gym
           color = '585123'
       elsif climb.verification != nil
          color = '772F1A'
