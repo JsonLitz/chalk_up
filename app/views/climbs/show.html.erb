@@ -1,19 +1,21 @@
 <%= render 'climb' %>
 <%= render 'checkins/new' %>
-<div class="panel panel-default col-lg-8 col-lg-offset-2">
+<div class="row">
   <% @climb.comments.each do |comment| %>
-    <div class="panel-heading">
-    <h2>
-      <%= comment.title %>
-    </h2>
-    <p>By <%= comment.user.username %></p>
+    <div class="col s12 m4 comment-card">
+      <div class="card blue-grey darken-1 comment-card">
+        <div class="card-content white-text">
+            <span class="card-title"><%= comment.title %></span>
+            <p><%= comment.body %></p>
+            <p>By <%= comment.user.username %></p>
+        </div>
+        <div class="card-action">
+          <% if comment.user_id == session[:user_id] %>
+            <%= link_to "update", edit_comment_path(comment), class: "waves-effect waves-light btn" %>
+            <%= link_to "delete", comment_path(comment), method: :delete, :class => "btn btn-default", data: { confirm: "Are you sure you want to delete this comment?" } %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <%= comment.body %>
-    </div>
-    <% if comment.user_id == session[:user_id] %>
-    <%= link_to "update", edit_comment_path(comment), :class => "btn btn-primary" %>
-    <%= link_to "delete", comment_path(comment), method: :delete, :class => "btn btn-default", data: { confirm: "Are you sure you want to delete this comment?" } %>
-    <% end %>
   <% end %>
 </div>
