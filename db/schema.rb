@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160831185142) do
     t.string   "style"
     t.boolean  "gym?"
     t.boolean  "verification"
+    t.text     "checkins"
   end
 
   create_table "comments", force: :cascade do |t|

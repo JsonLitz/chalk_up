@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       flash[:notice] = "Congrats! Your comment has been successfuly updated."
-      redirect_to climb_path(@comment.climb_id)
+      # redirect_to climb_path(@comment.climb_id)
     else
       flash[:error] = "There was an error in updating your comment: #{@comment.errors.full_messages.join(',')}"
       redirect_to climb_path(@comment.climb_id)
