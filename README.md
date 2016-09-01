@@ -43,3 +43,10 @@ Welcome to Chalk UP!
 * email confirmation
 * email and password reset
 [Check it out!](http://chalk-it-up.herokuapp.com/)
+
+### Wireframes:
+
+* [Map page](http://i.imgur.com/mxSzS16.png "map page")
+* [New Climb Page](http://i.imgur.com/cHkJWY8.png "New Climb Page")
+* [User Profile](http://i.imgur.com/VOriTJP.png "Profile Page")
+* [Sign in Page](http://i.imgur.com/ZduXsMZ.png)
