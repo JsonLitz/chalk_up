@@ -27,14 +27,13 @@
               <h3> Check-Ins</h3>
                    <div class="col-md-5 user_climb_list">
                    <% @climb_name.each.with_index do |name, i| %>
-                   <li><%=@time_checked_in[i] %> - <%= link_to name, climb_path(@justins_landspeeder[i]) %> 
-                  </li>
+                   <p> <%=@time_checked_in[i] %> - <%= link_to name, climb_path(@justins_landspeeder[i]) %> </p>
                    <% end %>
                   </div>
               <h3> Comments Log </h3>
                   <div class="col-md-5 user_comments_list">
                     <% @user.comments.each.with_index do |comment, i| %>
-                    <li><%= comment.created_at.strftime("%b %-d %Y, %H:%M%p") %> -  <%= comment.title %> </li>
+                    <%= comment.created_at.strftime("%b %-d %Y, %H:%M%p") %> -  <%= comment.title %>
                     <% end %>
                   </div>
              </div>
