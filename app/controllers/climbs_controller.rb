@@ -34,6 +34,9 @@ class ClimbsController < ApplicationController
   end
 
   def show
+    if @climb == nil 
+      @climb = Climb.name(params[:id])
+    end
   end
 
   def edit

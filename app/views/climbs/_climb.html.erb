@@ -3,14 +3,14 @@
     <img class="activator" id="climb-img" src="<%= @climb.image %>">
   </div>
   <div class="card-content">
-    <p class="card-title activator orange-text text-darken-4"><%=@climb.name%><i class="material-icons right">more_vert</i></p>
+    <p class="card-title activator orange-text text-darken-4"><%= link_to @climb.name, climb_path(@climb.id) %><i class="material-icons right">more_vert</i></p>
     <%= link_to new_comment_path(@climb), class: "waves-effect waves-light btn" do %>
       <i class="material-icons right">comment</i>
       Add a Comment
     <% end %>
   </div>
   <div class="card-reveal">
-    <span class="card-title orange-text text-darken-4"><%=@climb.name%><i class="material-icons right">close</i></span>
+    <span class="card-title orange-text text-darken-4"><%= link_to @climb.name, climb_path(@climb.id) %><i class="material-icons right">close</i></span>
     <p>Rating:</p>
     <span class="climb-data"><%=@climb.rating%></span>
     <p>Style:</p>
