@@ -4,80 +4,97 @@
     <h3 class = "header_text"> New Climb Location </h3>
     <fieldset>
       <%= form_for @climb do |climb| %>
-      <% if @climb.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@climb.errors.count, "error") %> prohibited this climb from being saved:</h2>
-          <ul>
-            <% @climb.errors.full_messages.each do |message| %>
-             <li><%= message %></li>
-            <% end %>
-          </ul>
+        <% if @climb.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@climb.errors.count, "error") %> prohibited this climb from being saved:</h2>
+            <ul>
+              <% @climb.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-group">
+            <label class="active" for="first_name2"> Name</label>
+          <div class="form-field validate">
+            <%= climb.text_field :name, class: "form-field" %>
+          </div>
         </div>
-      <% end %>
-      <div class="form-group">
-          <label class="active" for="first_name2"> Name</label>
-        <div class="form-field validate">
-          <%= climb.text_field :name, class: "form-field" %>
+        <div class="form-group">
+          <label>Image</label>
+          <div class="form-field">
+            <%= climb.text_field :image, class: "form-field" %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Image</label>
-        <div class="form-field">
-          <%= climb.text_field :image, class: "form-field" %>
+        <div class="form-group">
+          <label>Style</label>
+          <div class="form-field">
+            <%= climb.select(:style, options_for_select([["bouldering", "bouldering"], ["top rope climbing", "top rope climbing"], ["lead climbing", "lead climbing"], ["trad climbing", "trad climbing"], ["mountaineering", "mountaineering"], ["free solo climbing", "free solo climbing"], ["sport climbing", "sport climbing"]]), class: 'browser-default') %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Style</label>
-        <div class="form-field">
-          <%= climb.select("style", [["bouldering", "bouldering"], ["top rope climbing", "top rope climbing"], ["lead climbing", "lead climbing"], ["trad climbing", "trad climbing"], ["mountaineering", "mountaineering"], ["free solo climbing", "free solo climbing"], ["sport climbing", "sport climbing"]]) %>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="form-field">
+            <%= climb.select(:rating, options_for_select([["1 -  Easy", 1], ["2", 2], ["3 - Moderate", 3], ["4", 4], ["5 - Difficult", 5]]), class: 'browser-default') %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Rating</label>
-        <div class="form-field">
-          <%= climb.select("rating", options_for_select([["1 -  Easy", 1], ["2", 2], ["3 - Moderate", 3], ["4", 4], ["5 - Difficult", 5]])) %>
+        <div class="form-group">
+          <label>Gear </label>
+          <div class="form-field">
+            <%= climb.text_field :gear, class: "form-field" %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Gear </label>
-        <div class="form-field">
-          <%= climb.text_field :gear, class: "form-field" %>
+        <div class="form-group">
+          <label>Use your current location?</label>
+          <%= climb.radio_button(:geolocation, true, checked: true, class: 'browser-default') %>
+          <%= climb.label(:geolocation, 'Yes', value: 'true') %>
+          <%= climb.radio_button(:geolocation, false, class: 'browser-default') %>
+          <%= climb.label(:geolocation, 'No', value: 'false') %>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Use your current location?</label>
-        <%= climb.radio_button("geolocation", true) %>
-        <label>Yes</label>
-        <%= climb.radio_button("geolocation", false) %>
-        <label>No</label>
-      </div>
-      <div class="form-group">
-        <label>Latitude</label>
-        <div class="form-field form-field">
-          <%= climb.text_field :latitude, value: nil, id: "lat", class: "form-field" %>
+        <div id='manual-geolocation' style="display: none;">
+          <div class="form-group">
+            <label>Latitude</label>
+            <div class="form-field form-field">
+              <%= climb.text_field :latitude, value: nil, id: "lat", class: "form-field" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Longitude</label>
+            <div class="form-field">
+              <%= climb.text_field :longitude, value: nil, id: "lng", class: "form-field" %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Longitude</label>
-        <div class="form-field">
-          <%= climb.text_field :longitude, value: nil, id: "lng", class: "form-field" %>
+        <div class="form-group">
+          <label>Is this spot a gym?</label>
+          <%= climb.radio_button(:gym, true, checked: true, class: 'browser-default') %>
+          <%= label(:gym, 'Yes', value: 'true') %>
+          <%= climb.radio_button(:gym, false, class: 'browser-default') %>
+          <%= label(:gym, 'No', value: 'false') %>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Is this spot a gym?</label>
-        <%= radio_button_tag('climb[gym?]', true) %>
-        <label>Yes</label>
-        <%= radio_button_tag('climb[gym?]', false) %>
-        <label>No</label>
-      </div>
-      <%= climb.submit "Submit Location", :class => "btn btn-primary" %>
+        <%= climb.submit "Submit Location", :class => "btn btn-primary" %>
       <% end %>
     </fieldset>
   </div>
 </div>
-<script> function setPos(position){
-$('#lat').val(position.coords.latitude)
-$('#lng').val(position.coords.longitude)
-};
-navigator.geolocation.getCurrentPosition(setPos)
+
+<script>
+  $(document).ready(function() {
+    // Enable materialize select dropdowns w/ Rails form helpers
+    $('select').material_select();
+
+    $('#climb_geolocation_true').click(function(e) {
+      $('#manual-geolocation').hide();
+    });
+
+    $('#climb_geolocation_false').click(function(e) {
+      $('#manual-geolocation').show();
+    });
+  });
+
+  function setPos(position){
+    $('#lat').val(position.coords.latitude)
+    $('#lng').val(position.coords.longitude)
+  };
+  navigator.geolocation.getCurrentPosition(setPos)
 </script>

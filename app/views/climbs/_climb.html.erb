@@ -4,26 +4,37 @@
   </div>
   <div class="card-content">
     <p class="card-title activator orange-text text-darken-4"><%=@climb.name%><i class="material-icons right">more_vert</i></p>
-    <%= link_to new_comment_path(@climb), class: "waves-effect waves-light btn" do %>
+    <%= link_to new_comment_path(@climb), class: "btn waves-effect waves-light red" do %>
       <i class="material-icons right">comment</i>
       Add a Comment
     <% end %>
   </div>
   <div class="card-reveal">
-    <span class="card-title orange-text text-darken-4"><%=@climb.name%><i class="material-icons right">close</i></span>
-    <p>Rating:</p>
-    <span class="climb-data"><%=@climb.rating%></span>
-    <p>Style:</p>
-    <span><%=@climb.style%></span>
-    <p>Gear:</p>
+    <span class="card-title btn-floating btn-large waves-effect waves-light red"><%=@climb.name%><i class="material-icons">close</i></span>
     <span class="climb-data">
-      <ul class="collection">
-        <% @climb.gear.split(", ").each do |gear| %>
-          <li class="collection-item"><%= gear %></li>
-        <% end %>
-      </ul>
+      <div class="section">
+        <h6>Rating</h6>
+        <p>V<%=@climb.rating%></p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h6>Style</h6>
+        <p><%=@climb.style%></p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h6>Gear</h6>
+        <p>
+          <% @climb.gear.split(", ").each do |gear| %>
+            <li><%= gear %></li>
+          <% end %>
+        </p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <h6>Gym</h6>
+        <p><%= @climb.gym? ? 'Yes' : 'No' %></p>
+      </div>
     </span>
-    <p>Gym:</p>
-    <span><%=@climb.gym?%></span>
   </div>
 </div>
