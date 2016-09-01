@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @climb_name << climb_name
   end
  end
-
+ 
  def edit
  end
 
