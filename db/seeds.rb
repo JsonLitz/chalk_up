@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'ffaker'
 
+
+
 15.times do
   User.create(
     email: FFaker::Internet.email,
@@ -15,18 +17,38 @@ require 'ffaker'
     image: FFaker::Avatar.image
   )
 end
-  a= 1
-  b= 1
-  for i in 0..5
-        for i in 0..5
 
-        Comment.create(
-          title: FFaker::CheesyLingo.title,
-          body: FFaker::DizzleIpsum.paragraph,
-          user_id: a,
-          climb_id: b
-        )
-         b = b+1
-        end
-        a=a+1
-  end
+
+       User.all.each do | user |
+
+          Comment.create(
+            title: FFaker::CheesyLingo.title,
+            body: FFaker::DizzleIpsum.paragraph,
+            user_id: user.id,
+            climb_id: 1
+          )
+          Comment.create(
+            title: FFaker::CheesyLingo.title,
+            body: FFaker::DizzleIpsum.paragraph,
+            user_id: user.id,
+            climb_id: 2
+          )
+          Comment.create(
+            title: FFaker::CheesyLingo.title,
+            body: FFaker::DizzleIpsum.paragraph,
+            user_id: user.id,
+            climb_id: 3
+          )
+          Comment.create(
+            title: FFaker::CheesyLingo.title,
+            body: FFaker::DizzleIpsum.paragraph,
+            user_id: user.id,
+            climb_id: 4
+          )
+          Comment.create(
+            title: FFaker::CheesyLingo.title,
+            body: FFaker::DizzleIpsum.paragraph,
+            user_id: user.id,
+            climb_id: 5
+            )
+      end
