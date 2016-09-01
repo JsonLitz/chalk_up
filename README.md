@@ -50,3 +50,7 @@ Welcome to Chalk UP!
 * [New Climb Page](http://i.imgur.com/cHkJWY8.png "New Climb Page")
 * [User Profile](http://i.imgur.com/VOriTJP.png "Profile Page")
 * [Sign in Page](http://i.imgur.com/ZduXsMZ.png)
+
+##### User stories:
+
+* [Google Doc](https://docs.google.com/document/d/1XH4z41AzWib3y_vH-7Qdz_oS-SeeSpPM3f0WzrgtN5w/edit?usp=sharing)
