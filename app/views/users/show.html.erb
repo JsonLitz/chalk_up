@@ -1,27 +1,44 @@
-
-    <div class="col-md-12">
-      <div class="col-md-6">
-        <span class="profile">
-          <div class="profile_image">
-
-          <h1 class = "test"><%= @user.username  %> </h1>
-          <p> Member since: <%=@user.created_at.strftime("%F")%> </p>
-          <img src= <%= @user.image%> >
-
-        </div>
-        </span>
-      </div>
-      <div class="col-md-6 ">
-        <h1>Place I've climbed</h1>
-        <div class="col-md-5 user_climb_list">
-          <ul class = >
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-          </ul>
-          <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
-
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <h3 class="card-title"><%= @user.username %></h3>
+       <div class="col s12 m4">
+         <div class="card">
+           <div class="card-image profile_pic">
+             <img class="profile_image" src="<%= @user.image%>" >
+           </div>
+           <div class="card-content">
+             <p> Member since: <%=@user.created_at.strftime("%b %-d %Y, %H:%M%p")%> </p>
+           <div class="card-action">
+             <%= link_to "update", user_path(@user), :class => "btn btn-primary btn-sm" %>
+             <%= link_to "delete", user_path(@user), method: :delete, :class => "btn btn-default btn-sm", data: { confirm: "Are you sure you want to delete your profile?" } %>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col s12 m7">
+     <div>
+      <h3> Climb Log<span>  <%= link_to "new climb!", new_climb_path(@climb), :class => "btn btn-primary" %></h3></span>
+       </div>
+         <div class="card horizontal">
+           <div class="card-image">
+             <img src="http://lorempixel.com/100/190/nature/10">
+           </div>
+           <div class="card-stacked">
+             <div class="card-content">
+              <h3> Check-Ins</h3>
+                   <div class="col-md-5 user_climb_list">
+                   <% @climb_name.each.with_index do |name, i| %>
+                   <p> <%=@time_checked_in[i] %> - <%= link_to name, climb_path(@justins_landspeeder[i]) %> </p>
+                   <% end %>
+                  </div>
+              <h3> Comments Log </h3>
+                  <div class="col-md-5 user_comments_list">
+                    <% @user.comments.each.with_index do |comment, i| %>
+                    <%= comment.created_at.strftime("%b %-d %Y, %H:%M%p") %> -  <%= comment.title %>
+                    <% end %>
+                  </div>
+             </div>
+           </div>
+         </div>
+       </div>
+<div class="col-md-12">
+</div>

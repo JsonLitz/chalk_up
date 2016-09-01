@@ -1,7 +1,12 @@
 
-<div class="col-md-3 col-md-offset-4 content_border">
+
+
+<div class="parallax-container">
+<div class="parallax"><img src="https://s-media-cache-ak0.pinimg.com/736x/d4/a0/dc/d4a0dc66716bd6a501d85531b107feaa.jpg"></div>
+<div class = "container">
+<div class="col s2">
   <h1>Log in to your account </h1>
-  <div class="form_for">
+  <div class="form_for" id = "login_user">
     <%= form_for @user, url: '/sessions' do |f| %>
     <div>
       <h3>Email :</h3>
@@ -12,9 +17,20 @@
       <%= f.password_field :password, placeholder: 'Password' %>
     </div>
     <div>
-      <%= f.submit "Log In", :class => "btn btn-primary signup" %>
+      <%= f.submit "Log In", :class => "btn btn-primary signup", :id => "login-btn"%>
     </div>
     <% end %>
-  </div>
-  <br>
+
 </div>
+</div>
+</div>
+ </div>
+
+
+<script>
+
+  $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+
+ </script>
