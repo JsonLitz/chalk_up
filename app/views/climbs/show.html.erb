@@ -1,5 +1,14 @@
 <%= render 'climb' %>
-<%= render 'checkins/new' %>
+<div class="center-align">
+  <%= button_to 'Check-in for this climb!',
+      new_climb_checkin_path(@climb),
+      params: {
+        'checkin[climb_id]' => @climb.id,
+        'checkin[user_id]' => session[:user_id],
+        'checkin[count]' => 1 },
+      class: "btn waves-effect waves-light blue" %>
+</div>
+
 <div class="row">
   <% @climb.comments.each do |comment| %>
     <div class="col s12 m4 comment-card">
