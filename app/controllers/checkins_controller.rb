@@ -20,19 +20,6 @@ class CheckinsController < ApplicationController
     end
   end
 
-  def show
-    @checkin = Checkin.find_by_id(params[:id])
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   private
     def checkin_params
       params.require(:checkin).permit(:climb_id, :user_id, :count)

@@ -31,9 +31,5 @@ Rails.application.routes.draw do
   get "/climbs/:climb_id/checkins" => "checkins#index", as: "climb_checkins"
   post "/climbs/:climb_id/checkins/new" => "checkins#create"
   get "/climbs/:climb_id/checkins/new" => "checkins#new", as: "new_climb_checkin"
-  get "/checkins/:id/edit" => "checkins#edit", as: "edit_checkin"
-  get "/checkins/:id" => "checkins#show", as: "checkin"
-  patch "/checkins/:id" => "checkins#update"
-  delete "/checkins/:id" => "checkins#destroy"
 
 end
