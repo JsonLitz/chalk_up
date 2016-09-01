@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831185142) do
+ActiveRecord::Schema.define(version: 20160901061748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,9 +36,8 @@ ActiveRecord::Schema.define(version: 20160831185142) do
     t.integer  "rating"
     t.string   "gear",         default: ""
     t.string   "style"
-    t.boolean  "gym?"
+    t.boolean  "gym"
     t.boolean  "verification"
-    t.text     "checkins"
   end
 
   create_table "comments", force: :cascade do |t|
