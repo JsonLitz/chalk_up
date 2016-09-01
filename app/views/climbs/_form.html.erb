@@ -6,10 +6,10 @@
       <%= form_for @climb do |climb| %>
         <% if @climb.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@climb.errors.count, "error") %> prohibited this climb from being saved:</h2>
+            <h4 class = "header_text"><%= pluralize(@climb.errors.count, "error") %> prohibited this climb from being saved:</h4>
             <ul>
               <% @climb.errors.full_messages.each do |message| %>
-               <li><%= message %></li>
+               <li class = "header_text"><%= message %></li>
               <% end %>
             </ul>
           </div>
