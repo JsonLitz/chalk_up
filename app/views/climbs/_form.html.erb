@@ -28,19 +28,19 @@
       <div class="form-group">
         <label>Style</label>
         <div class="form-field">
-          <%= climb.text_field :style, class: "form-field" %>
+          <%= climb.select("style", [["bouldering", "bouldering"], ["top rope climbing", "top rope climbing"], ["lead climbing", "lead climbing"], ["trad climbing", "trad climbing"], ["mountaineering", "mountaineering"], ["free solo climbing", "free solo climbing"], ["sport climbing", "sport climbing"]]) %>
         </div>
       </div>
       <div class="form-group">
         <label>Rating</label>
         <div class="form-field">
-          <%= climb.select("rating", options_for_select([['1 -  Easy', 1], ['2', 2], ['3 - Moderate', 3], ['4', 4], ['5 - Difficult', 5]])) %>
+          <%= climb.select("rating", options_for_select([["1 -  Easy", 1], ["2", 2], ["3 - Moderate", 3], ["4", 4], ["5 - Difficult", 5]])) %>
         </div>
       </div>
       <div class="form-group">
         <label>Gear </label>
         <div class="form-field">
-          <%= climb.select("gear", [['bouldering', 'bouldering'], ['top rope climbing', 'top rope climbing'], ['lead climbing', 'lead climbing'], ['trad climbing', 'trad climbing'], ['mountaineering', 'mountaineering'], ['free solo climbing', 'free solo climbing'], ['sport climbing', 'sport climbing']]) %>
+          <%= climb.text_field :gear, class: "form-field" %>
         </div>
       </div>
       <div class="form-group">

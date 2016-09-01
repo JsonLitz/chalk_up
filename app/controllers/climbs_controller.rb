@@ -1,6 +1,7 @@
 class ClimbsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_climb, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :update, :destroy]
 
   def index
     @climbs = Climb.all
@@ -49,8 +50,9 @@ class ClimbsController < ApplicationController
   end
 
   def destroy
+    @climb.comments.delete_all
     if @climb.destroy
-      flash[:notice] = "Your comment has been successfully deleted."
+      flash[:notice] = "Your climb has been successfully deleted."
       redirect_to root_path
     else
       flash[:error] = "Uh oh! There was an error deleting your climb, #{@climb.errors.full_messages.join(',')}"
@@ -66,5 +68,9 @@ class ClimbsController < ApplicationController
 
     def climb_params
       params.require(:climb).permit(:name, :image, :longitude, :latitude, :geolocation, :rating, :gear, :style, :gym?)
+    end
+
+    def require_admin
+      redirect_to climb_path(@climb) unless User.find(session[:user_id]).admin?
     end
 end
