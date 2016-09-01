@@ -1,18 +1,19 @@
 <%= render 'climb' %>
+<%= render 'checkins/new' %>
 <div class="panel panel-default col-lg-8 col-lg-offset-2">
   <% @climb.comments.each do |comment| %>
     <div class="panel-heading">
     <h2>
       <%= comment.title %>
     </h2>
+    <p>By <%= comment.user.username %></p>
     </div>
     <div class="panel-body">
-
       <%= comment.body %>
     </div>
     <% if comment.user_id == session[:user_id] %>
     <%= link_to "update", edit_comment_path(comment), :class => "btn btn-primary" %>
-    <%= link_to "delete", comment_path(comment), method: :delete, :class => "btn btn-default" %>
+    <%= link_to "delete", comment_path(comment), method: :delete, :class => "btn btn-default", data: { confirm: "Are you sure you want to delete this comment?" } %>
     <% end %>
   <% end %>
 </div>

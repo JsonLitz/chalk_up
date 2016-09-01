@@ -1,0 +1,4 @@
+<h1>All Comments for <%= "#{@climb.name}" %></h1>
+<% @checkins.each do |checkin| %>
+<%= "#{@user.username} checked in for #{@climb.name}" %>
+<% end %>
