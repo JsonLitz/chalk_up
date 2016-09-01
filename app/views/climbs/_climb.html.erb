@@ -1,43 +1,29 @@
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%=@climb.name%></h3>
-    </div>
-
-    <div class="panel-body">
-      <div class="col-xs-4">
-        <div class="thumbnail">
-          <img src="<%= @climb.image %>" class="img-responsive pull-xs-left">
-          <br>
-          <%= link_to "update", edit_climb_path(@climb), :class => "btn btn-primary" %>
-          <%= link_to "delete", climb_path(@climb), method: :delete, :class => "btn btn-default", data: { confirm: "Are you sure you want to delete this climb?" } %>
-          <%= link_to "add a comment", new_comment_path(@climb), :class => "btn btn-success" %>
-        </div>
-      </div>
-      <div class="col-xs-4">
-        <div class="list-group-item">
-          <p class="pull-left">Name:</p>
-          <span class="climb-data"><%=@climb.name%></span>
-        </div>
-        <div class="list-group-item">
-          <p class="pull-left">Rating:</p>
-          <span class="climb-data"><%=@climb.rating%></span>
-        </div>
-        <div class="list-group-item">
-          <p class="pull-left">Gear:</p>
-          <span class="climb-data">
-            <% @climb.gear.split(", ").each do |gear| %>
-              <li><%= gear %></li>
-            <% end %>
-          </span>
-        </div>
-        <div class="list-group-item">
-          <p class="pull-left">Style:</p>
-          <span class="climb-data"><%=@climb.style%></span>
-        </div>
-        <div class="list-group-item">
-          <p class="pull-left">Gym:</p>
-          <span class="climb-data"><%=@climb.gym?%></span>
-        </div>
-      </div>
-    </div>
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" id="climb-img" src="<%= @climb.image %>">
   </div>
+  <div class="card-content">
+    <p class="card-title activator orange-text text-darken-4"><%=@climb.name%><i class="material-icons right">more_vert</i></p>
+    <%= link_to new_comment_path(@climb), class: "waves-effect waves-light btn" do %>
+      <i class="material-icons right">comment</i>
+      Add a Comment
+    <% end %>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title orange-text text-darken-4"><%=@climb.name%><i class="material-icons right">close</i></span>
+    <p>Rating:</p>
+    <span class="climb-data"><%=@climb.rating%></span>
+    <p>Style:</p>
+    <span><%=@climb.style%></span>
+    <p>Gear:</p>
+    <span class="climb-data">
+      <ul class="collection">
+        <% @climb.gear.split(", ").each do |gear| %>
+          <li class="collection-item"><%= gear %></li>
+        <% end %>
+      </ul>
+    </span>
+    <p>Gym:</p>
+    <span><%=@climb.gym?%></span>
+  </div>
+</div>
