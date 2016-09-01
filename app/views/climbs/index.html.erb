@@ -3,7 +3,7 @@
   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
   <h1 id="splash"> Welcome to Chalk Up! </h1>
   <span><h5>Climb. Share. Discover.</h5></span>
-  <%= link_to "Add new Location!", new_climb_path(@climb), :class => "btn btn-primary" %>
+  <%= link_to "Add new Location!", new_climb_path(@climb), class: "btn waves-effect waves-light red" %>
   <div class="container-fluid">
     <div class="row" id="map" style='width:100%; height: 1000px;'></div>
   </div>
@@ -26,7 +26,7 @@
   </script>
   <div class="row">
     <% @climbs.each do |climb| %>
-      <div class="col s4"><%= render :partial => 'climb', :locals => {:@climb => climb} %></div>
+      <div class="col s6"><%= render :partial => 'climb', :locals => {:@climb => climb} %></div>
     <% end %>
   </div>
 </div>
